@@ -1,0 +1,16 @@
+C:\Users\abram\source\repos\Flopify\Models\bin\Debug\Models.dll.config
+C:\Users\abram\source\repos\Flopify\Models\bin\Debug\Models.dll
+C:\Users\abram\source\repos\Flopify\Models\bin\Debug\Models.pdb
+C:\Users\abram\source\repos\Flopify\Models\bin\Debug\EntityFramework.dll
+C:\Users\abram\source\repos\Flopify\Models\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\abram\source\repos\Flopify\Models\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\abram\source\repos\Flopify\Models\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\abram\source\repos\Flopify\Models\bin\Debug\EntityFramework.xml
+C:\Users\abram\source\repos\Flopify\Models\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\abram\source\repos\Flopify\Models\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\abram\source\repos\Flopify\Models\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\abram\source\repos\Flopify\Models\obj\Debug\Models.csprojAssemblyReference.cache
+C:\Users\abram\source\repos\Flopify\Models\obj\Debug\Models.csproj.CoreCompileInputs.cache
+C:\Users\abram\source\repos\Flopify\Models\obj\Debug\Models.csproj.CopyComplete
+C:\Users\abram\source\repos\Flopify\Models\obj\Debug\Models.dll
+C:\Users\abram\source\repos\Flopify\Models\obj\Debug\Models.pdb
