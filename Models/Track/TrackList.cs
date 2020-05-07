@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Models.Track
 {
-    class TrackList
+    public class TrackList
     {
+        public int TrackId { get; set; }
+        public string Title { get; set; }
+        public TimeSpan PlayTime { get; set; }
+
     }
 }
