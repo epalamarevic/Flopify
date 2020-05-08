@@ -33,3 +33,6 @@ C:\Users\abram\source\repos\Flopify\Data\obj\Debug\Data.csproj.CoreCompileInputs
 C:\Users\abram\source\repos\Flopify\Data\obj\Debug\Data.csproj.CopyComplete
 C:\Users\abram\source\repos\Flopify\Data\obj\Debug\Data.dll
 C:\Users\abram\source\repos\Flopify\Data\obj\Debug\Data.pdb
+C:\Users\abram\source\repos\Flopify\Data\obj\Debug\Data.Migrations.InitialCreate.resources
+C:\Users\abram\source\repos\Flopify\Data\obj\Debug\Data.csproj.GenerateResource.cache
+C:\Users\abram\source\repos\Flopify\Data\obj\Debug\Data.Migrations.firstMigration.resources
