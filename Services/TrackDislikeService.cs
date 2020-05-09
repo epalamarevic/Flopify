@@ -4,6 +4,7 @@ using Models.TrackDislike;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -21,13 +22,18 @@ namespace Services
         {
             var entity = new TrackDislike()
             {
-                TrackId = model.TrackId
+                TrackId = model.TrackId,
+                UserId = _userId
             };
 
             using (var ctx = new ApplicationDbContext())
             {
-                ctx.TrackDislikes.Add(entity);
-                ctx.SaveChanges();
+                var query = ctx.TrackDislikes.Where(e => e.UserId == _userId && e.TrackId == model.TrackId);
+                if (query == null)
+                {
+                    ctx.TrackDislikes.Add(entity);
+                    ctx.SaveChanges();
+                }
             }
         }
 
@@ -35,7 +41,7 @@ namespace Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var request = ctx.TrackDislikes.Select(e => new TrackDislikeList { TrackId = e.TrackId });
+                var request = ctx.TrackDislikes.Select(e => new TrackDislikeList { TrackDislikeId = e.TrackDislikeId, TrackId = e.TrackId });
                 return request.ToArray();
             }
         }

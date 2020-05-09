@@ -11,9 +11,8 @@ namespace Data
     public class TrackDislike
     {
         [Key]
-       public int TrackDislikeId {get; set;}
-
-        //private Guid userId { get; set; }
+        public int TrackDislikeId {get; set;}
+        public Guid UserId { get; set; }
 
         [ForeignKey("Track")]
         public int TrackId{ get; set; }
