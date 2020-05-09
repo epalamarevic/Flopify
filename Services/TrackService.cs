@@ -22,7 +22,6 @@ namespace Services
             var entity =
                 new Track()
                 {
-                    TrackId = model.TrackId,
                     Title = model.Title,
                     PlayTime = model.PlayTime,
                 };

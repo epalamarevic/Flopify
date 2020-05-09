@@ -8,9 +8,7 @@ namespace Models.Track
 {
     public class CreateTrack
     {
-        public int TrackId { get; set; }
         public string Title { get; set; }
         public TimeSpan PlayTime { get; set; }
-
     }
 }
