@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity;
 using Models.TrackDislike;
+using Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,7 @@ namespace API.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            trackDislikeService.CreateTrackDislike(model);
+            trackDislikeService.CreateDislike(model);
 
             return Ok();
         }
@@ -28,7 +29,7 @@ namespace API.Controllers
         {
             TrackDislikeService trackDislikeService = CreateTrackDislikeService();
 
-            var TrackDislikes = trackDislikeService.GetAllTracks();
+            var TrackDislikes = trackDislikeService.GetAllDislikes();
 
             return Ok(TrackDislikes);
         }
@@ -36,7 +37,7 @@ namespace API.Controllers
         {
             TrackDislikeService trackDislikeService = CreateTrackDislikeService();
 
-            trackDislikeService.DeleteTrack(id);
+            trackDislikeService.DeleteDislike(id);
 
             return Ok();
         }

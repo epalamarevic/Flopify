@@ -99,6 +99,10 @@
     <Compile Include="Migrations\202005091413270_secondmigration.Designer.cs">
       <DependentUpon>202005091413270_secondmigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202005091553000_addedTrackDislikes.cs" />
+    <Compile Include="Migrations\202005091553000_addedTrackDislikes.Designer.cs">
+      <DependentUpon>202005091553000_addedTrackDislikes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Track.cs" />
@@ -117,6 +121,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202005091413270_secondmigration.resx">
       <DependentUpon>202005091413270_secondmigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005091553000_addedTrackDislikes.resx">
+      <DependentUpon>202005091553000_addedTrackDislikes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
