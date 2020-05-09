@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Models.TrackDislike;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ namespace Contracts
 {
    public interface IDislikeService
     {
-        void CreateDislike(CreateTrackDislike model);
+        void CreateDislike(TrackDislikeCreate model);
         IEnumerable<TrackDislikeList> GetAllDislikes();
         void DeleteDislike(int trackDislikeId);
     }
