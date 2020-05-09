@@ -16,6 +16,7 @@ namespace Data
         //private Guid userId { get; set; }
 
         [ForeignKey("Track")]
-       public int TrackId{ get; set; }
+        public int TrackId{ get; set; }
+        public virtual Track Track { get; set; }
     }
 }
