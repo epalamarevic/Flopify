@@ -8,6 +8,7 @@ namespace Models.TrackDislike
 {
     public class TrackDislikeList
     {
+        public int TrackDislikeId { get; set; }
         public int TrackId { get; set; }
     }
 }
