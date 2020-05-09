@@ -44,7 +44,7 @@ namespace Services
 
                 ctx.Tracks.Remove(entity);
 
-               ctx.SaveChanges();
+                ctx.SaveChanges();
             }
         }
 
