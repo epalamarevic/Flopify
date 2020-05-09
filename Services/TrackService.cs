@@ -73,6 +73,8 @@ namespace Services
         {
             using (var ctx = new ApplicationDbContext())
             {
+                int dislikes = ctx.TrackDislikes.Where(e => e.TrackId == trackId).Count();
+
                 var entity =
                     ctx
                         .Tracks
@@ -83,7 +85,7 @@ namespace Services
                         TrackId = entity.TrackId,
                         Title = entity.Title,
                         PlayTime = entity.PlayTime,
-                        Dislikes= entity.Dislikes,
+                        Dislikes = dislikes
                     };
             }
         }
