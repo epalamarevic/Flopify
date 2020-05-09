@@ -11,6 +11,12 @@ namespace Services
 {
     public class TrackService : ITrackServices
     {
+        private readonly Guid _userId;
+        public TrackService(Guid userId)
+        {
+            _userId = userId;
+        }
+
         public void CreateTrack(CreateTrack model)
         {
             var entity =
