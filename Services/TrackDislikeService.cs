@@ -28,8 +28,8 @@ namespace Services
 
             using (var ctx = new ApplicationDbContext())
             {
-                var query = ctx.TrackDislikes.Where(e => e.UserId == _userId && e.TrackId == model.TrackId);
-                if (query == null)
+                var query = ctx.TrackDislikes.Where(e => e.UserId == _userId && e.TrackId == model.TrackId).ToList();
+                if (query.Count == 0)
                 {
                     ctx.TrackDislikes.Add(entity);
                     ctx.SaveChanges();
