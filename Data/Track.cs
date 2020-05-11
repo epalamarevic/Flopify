@@ -15,8 +15,8 @@ namespace Data
         public string Title { get; set; }
         public TimeSpan PlayTime { get; set; }
 
-        //[ForeignKey("Album")]
-        //public int AlbumId { get; set; }
+        [ForeignKey("Album")]
+        public int AlbumId { get; set; }
 
         //[ForeignKey("Band")]
         //public int BandId { get; set; }
