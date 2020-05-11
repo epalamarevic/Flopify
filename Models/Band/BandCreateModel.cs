@@ -5,15 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Data
+namespace Models.Band
 {
-    public class Band
+    public class BandCreateModel
     {
-        [Key]
-        public int BandId { get; set; }
+        [Required]
         public string Name { get; set; }
         public string Genre { get; set; }
         public string Members { get; set; }
-        public int NumberOfAlbums { get; set; } = 0;
     }
 }
