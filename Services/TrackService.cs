@@ -24,6 +24,7 @@ namespace Services
                 {
                     Title = model.Title,
                     PlayTime = model.PlayTime,
+                    AlbumId = model.AlbumId
                 };
 
             using (var ctx = new ApplicationDbContext())
