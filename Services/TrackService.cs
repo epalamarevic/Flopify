@@ -73,7 +73,7 @@ namespace Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                int dislikes = ctx.TrackDislikes.Where(e => e.TrackId == trackId).Count();
+                // int dislikes = ctx.TrackDislikes.Where(e => e.TrackId == trackId).Count();
 
                 var entity =
                     ctx
@@ -85,7 +85,7 @@ namespace Services
                         TrackId = entity.TrackId,
                         Title = entity.Title,
                         PlayTime = entity.PlayTime,
-                        Dislikes = dislikes
+                        Dislikes = entity.Dislikes
                     };
             }
         }
@@ -102,7 +102,7 @@ namespace Services
                 entity.Title = model.UpdatedTitle;
                 entity.PlayTime = model.UpdatedPlayTime;
 
-               ctx.SaveChanges();
+                ctx.SaveChanges();
             }
         }
     }

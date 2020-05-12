@@ -22,7 +22,6 @@ namespace Services
             var entity =
                 new Album()
                 {
-
                     Title = model.Title,
                     DateReleased = model.DateReleased,
                 };
@@ -48,7 +47,11 @@ namespace Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-               // int dislikes = ctx.TrackDislikes.Where(e => e.AlbumId == albumId).Count();
+                //int dislikes = 0;
+                //var query = ctx.Tracks.Where(e => e.AlbumId == albumId).Select(e => e.PlayTime).ToList();
+                //TimeSpan totalPlaytime = query.;
+                
+                int numberOfTracks = ctx.Tracks.Where(e => e.AlbumId == albumId).Count();
 
                 var entity =
                     ctx
@@ -86,8 +89,6 @@ namespace Services
                         .Single(e => e.AlbumId == model.AlbumId);
 
                 entity.Title = model.Title;
-                entity.PlayTime = model.PlayTime;
-                entity.NumberOfTracks = model.NumberOfTracks;
                 entity.DateReleased = model.DateReleased;
 
                 ctx.SaveChanges();
