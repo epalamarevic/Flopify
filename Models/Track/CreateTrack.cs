@@ -10,5 +10,6 @@ namespace Models.Track
     {
         public string Title { get; set; }
         public TimeSpan PlayTime { get; set; }
+        public int AlbumId { get; set; }
     }
 }

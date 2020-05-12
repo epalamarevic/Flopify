@@ -31,7 +31,7 @@ namespace Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var request = ctx.Bands.Select(e => new BandListModel { Name = e.Name, Genre = e.Genre });
+                var request = ctx.Bands.Select(e => new BandListModel { BandId = e.BandId, Name = e.Name, Genre = e.Genre });
 
                 return request.ToArray();
             }
@@ -47,6 +47,7 @@ namespace Services
 
                 return new BandDetailModel
                 {
+                    BandId = entity.BandId,
                     Name = entity.Name,
                     Genre = entity.Genre,
                     Members = entity.Members,
