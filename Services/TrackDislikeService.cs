@@ -28,12 +28,14 @@ namespace Services
 
             using (var ctx = new ApplicationDbContext())
             {
-                var query = ctx.TrackDislikes.Where(e => e.UserId == _userId && e.TrackId == model.TrackId).ToList();
-                if (query.Count == 0)
-                {
-                    ctx.TrackDislikes.Add(entity);
-                    ctx.SaveChanges();
-                }
+                //var query = ctx.TrackDislikes.Where(e => e.UserId == _userId && e.TrackId == model.TrackId).ToList();
+                //if (query.Count == 0)
+                //{
+                //    ctx.TrackDislikes.Add(entity);
+                //    ctx.SaveChanges();
+                //}
+                ctx.TrackDislikes.Add(entity);
+                ctx.SaveChanges();
             }
         }
 

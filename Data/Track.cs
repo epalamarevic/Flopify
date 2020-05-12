@@ -17,10 +17,22 @@ namespace Data
 
         [ForeignKey("Album")]
         public int AlbumId { get; set; }
+        public virtual Album Album { get; set; }
 
         //[ForeignKey("Band")]
         //public int BandId { get; set; }
 
-        public int Dislikes { get; set; }
+        public int Dislikes
+        {
+            get
+            {
+                using (var ctx = new ApplicationDbContext())
+                {
+                    var query = ctx.TrackDislikes.Where(e => e.TrackId == TrackId).Count();
+                    return query;
+                }
+            }
+        }
+
     }
 }
