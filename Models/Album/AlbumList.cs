@@ -9,6 +9,9 @@ namespace Models.Album
     public class AlbumList
     {
         public int AlbumId { get; set; }
+        public string Title { get; set; }
+        public TimeSpan PlayTime { get; set; }
+        public int NumberOfTracks { get; set; }
         public int BandId { get; set; }
     }
 }

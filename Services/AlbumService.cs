@@ -24,8 +24,6 @@ namespace Services
                 {
                     Title = model.Title,
                     DateReleased = model.DateReleased,
-                    PlayTime = model.PlayTime,
-                    NumberOfTracks = model.NumberOfTracks,
                     BandId = model.BandId
                 };
 
@@ -53,8 +51,6 @@ namespace Services
                 //int dislikes = 0;
                 //var query = ctx.Tracks.Where(e => e.AlbumId == albumId).Select(e => e.PlayTime).ToList();
                 //TimeSpan totalPlaytime = query.;
-                
-                int numberOfTracks = ctx.Tracks.Where(e => e.AlbumId == albumId).Count();
 
                 var entity =
                     ctx
@@ -78,7 +74,7 @@ namespace Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var request = ctx.Albums.Select(e => new AlbumList { AlbumId = e.AlbumId, BandId = e.BandId });
+                var request = ctx.Albums.Select(e => new AlbumList { AlbumId = e.AlbumId, Title = e.Title, PlayTime = e.PlayTime, NumberOfTracks = e.NumberOfTracks, BandId = e.BandId });
                 return request.ToArray();
             }
         }
