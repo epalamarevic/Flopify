@@ -13,13 +13,6 @@ namespace Models.Track
         public TimeSpan PlayTime { get; set; }
 
         public int Dislikes { get; set; }
-
-        //[ForeignKey("Album")]
-        //public int AlbumId { get; set; }
-
-        //[ForeignKey("Band")]
-        //public int BandId { get; set; }
-
-
+        public int AlbumId { get; set; }
     }
 }

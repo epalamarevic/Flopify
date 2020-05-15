@@ -11,6 +11,5 @@ namespace Models.Track
         public int TrackId { get; set; }
         public string UpdatedTitle { get; set; }
         public TimeSpan UpdatedPlayTime { get; set; }
-
     }
 }

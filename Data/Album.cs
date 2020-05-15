@@ -13,14 +13,14 @@ namespace Data
         [Key]
         public int AlbumId { get; set; }
         public string Title { get; set; }
-        public TimeSpan PlayTime
+        public long PlayTimeTicks
         {
             get
             {
                 using (var ctx = new ApplicationDbContext())
                 {
-                    var childTracksPlayTime = ctx.Tracks.Where(e => e.AlbumId == AlbumId).Select(e => e.PlayTime).ToList();
-                    TimeSpan playTime = TimeSpan.Zero;
+                    var childTracksPlayTime = ctx.Tracks.Where(e => e.AlbumId == AlbumId).Select(e => e.PlayTimeTicks).ToList();
+                    long playTime = 0;
                     for (int i = 0; i < childTracksPlayTime.Count(); i++)
                     {
                         playTime += childTracksPlayTime[i];

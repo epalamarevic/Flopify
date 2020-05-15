@@ -11,19 +11,21 @@ namespace Services
 {
     public class TrackService : ITrackServices
     {
+        // Checking UserId to set later for each service
         private readonly Guid _userId;
         public TrackService(Guid userId)
         {
             _userId = userId;
         }
 
+        // Service to Create a Track
         public void CreateTrack(CreateTrack model)
         {
             var entity =
                 new Track()
                 {
                     Title = model.Title,
-                    PlayTime = model.PlayTime,
+                    PlayTimeTicks = TimeSpan.FromTicks(model.PlayTime.Ticks).Ticks,
                     AlbumId = model.AlbumId
                 };
 
@@ -34,6 +36,7 @@ namespace Services
             }
         }
 
+        // Service to Delete a Track by TrackId
         public void DeleteTrack(int trackId)
         {
             using (var ctx = new ApplicationDbContext())
@@ -49,6 +52,7 @@ namespace Services
             }
         }
 
+        // Service to return each Track in an IEnumerable List
         public IEnumerable<TrackList> GetAllTracks()
         {
             using (var ctx = new ApplicationDbContext())
@@ -62,7 +66,7 @@ namespace Services
                                 {
                                     TrackId= e.TrackId,
                                     Title = e.Title,
-                                    PlayTime = e.PlayTime,
+                                    PlayTime = TimeSpan.FromTicks(e.PlayTimeTicks)
                                 }
                         );
 
@@ -70,12 +74,11 @@ namespace Services
             }
         }
 
+        // Service to return details of a Track, selected by TrackId
         public TrackDetail GetTrackById(int trackId)
         {
             using (var ctx = new ApplicationDbContext())
             {
-                // int dislikes = ctx.TrackDislikes.Where(e => e.TrackId == trackId).Count();
-
                 var entity =
                     ctx
                         .Tracks
@@ -85,12 +88,13 @@ namespace Services
                     {
                         TrackId = entity.TrackId,
                         Title = entity.Title,
-                        PlayTime = entity.PlayTime,
+                        PlayTime = TimeSpan.FromTicks(entity.PlayTimeTicks),
                         Dislikes = entity.Dislikes
                     };
             }
         }
 
+        // Service to update a Track by the TrackId given in the body
         public void UpdateTrack(UpdateTrack model)
         {
             using (var ctx = new ApplicationDbContext())
@@ -101,7 +105,7 @@ namespace Services
                         .Single(e => e.TrackId == model.TrackId);
 
                 entity.Title = model.UpdatedTitle;
-                entity.PlayTime = model.UpdatedPlayTime;
+                entity.PlayTimeTicks = TimeSpan.FromTicks(model.UpdatedPlayTime.Ticks).Ticks;
 
                 ctx.SaveChanges();
             }
