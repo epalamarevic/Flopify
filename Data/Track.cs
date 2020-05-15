@@ -13,14 +13,11 @@ namespace Data
         [Key]
         public int TrackId { get; set; }
         public string Title { get; set; }
-        public TimeSpan PlayTime { get; set; }
+        public long PlayTimeTicks { get; set; }
 
         [ForeignKey("Album")]
         public int AlbumId { get; set; }
         public virtual Album Album { get; set; }
-
-        //[ForeignKey("Band")]
-        //public int BandId { get; set; }
 
         public int Dislikes
         {
