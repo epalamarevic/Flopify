@@ -54,7 +54,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+
+    <Compile Include="Album\AlbumDetail.cs" />
+    <Compile Include="Album\AlbumList.cs" />
+    <Compile Include="Album\AlbumCreate.cs" />
+    <Compile Include="Album\AlbumUpdate.cs" />
+
+    <Compile Include="Band\BandCreateModel.cs" />
+    <Compile Include="Band\BandDetailModel.cs" />
+    <Compile Include="Band\BandEditModel.cs" />
+    <Compile Include="Band\BandListModel.cs" />
+
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TrackDislike\TrackDislikeCreate.cs" />
+    <Compile Include="TrackDislike\TrackDislikeList.cs" />
+    <Compile Include="Track\CreateTrack.cs" />
+    <Compile Include="Track\TrackDetail.cs" />
+    <Compile Include="Track\TrackList.cs" />
+    <Compile Include="Track\UpdateTrack.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

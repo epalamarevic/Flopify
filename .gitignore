@@ -1,0 +1,11 @@
+.vs/
+API/bin/
+Contracts/bin/
+Data/bin/
+Models/bin/
+Services/bin/
+API/obj/
+Contracts/obj/
+Data/obj/
+Models/obj/
+Services/obj/
