@@ -20,12 +20,10 @@ namespace Data
             {
                 using (var ctx = new ApplicationDbContext())
                 {
-                    int numberOfAlbums = 0;
-                    numberOfAlbums += ctx.Albums.Where(e => e.BandId == BandId).Count();
+                    var numberOfAlbums = ctx.Albums.Where(e => e.BandId == BandId).Count();
                     return numberOfAlbums;
                 }
             }
-            set { NumberOfAlbums = value; }
         }
     }
 }

@@ -13,7 +13,7 @@ namespace Data
         [Key]
         public int AlbumId { get; set; }
         public string Title { get; set; }
-        public long PlayTimeTicks
+        /*public long PlayTimeTicks
         {
             get
             {
@@ -28,16 +28,21 @@ namespace Data
                     return playTime;
                 }
             }
-        }
+            set { PlayTimeTicks = value; }
+        }*/
 
+        private int _numberOfTracks;
         public int NumberOfTracks
         {
             get
             {
+                return _numberOfTracks;
+            }
+            set
+            {
                 using (var ctx = new ApplicationDbContext())
                 {
-                    int numberOfTracks = ctx.Tracks.Where(e => e.AlbumId == AlbumId).Count();
-                    return numberOfTracks;
+                    _numberOfTracks = ctx.Tracks.Where(e => e.AlbumId == AlbumId).Count();
                 }
             }
         }
