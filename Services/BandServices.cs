@@ -31,7 +31,7 @@ namespace Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var request = ctx.Bands.Select(e => new BandListModel { BandId = e.BandId, Name = e.Name, Genre = e.Genre});
+                var request = ctx.Bands.Select(e => new BandListModel { BandId = e.BandId, Name = e.Name, Genre = e.Genre });
 
                 return request.ToArray();
             }

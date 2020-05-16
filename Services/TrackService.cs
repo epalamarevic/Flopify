@@ -25,7 +25,6 @@ namespace Services
                 new Track()
                 {
                     Title = model.Title,
-                    //PlayTimeTicks = TimeSpan.FromTicks(model.PlayTime.Ticks).Ticks,
                     AlbumId = model.AlbumId
                 };
 
@@ -66,7 +65,6 @@ namespace Services
                                 {
                                     TrackId= e.TrackId,
                                     Title = e.Title,
-                                    //PlayTime = TimeSpan.FromTicks(e.PlayTimeTicks)
                                 }
                         );
 
@@ -87,10 +85,9 @@ namespace Services
                     new TrackDetail
                     {
                         TrackId = entity.TrackId,
-                        AlbumId = entity.AlbumId,
                         Title = entity.Title,
-                       // PlayTime = TimeSpan.FromTicks(entity.PlayTimeTicks),
-                        Dislikes = entity.Dislikes
+                        Dislikes = entity.Dislikes,
+                        AlbumId = entity.AlbumId
                     };
             }
         }
@@ -106,8 +103,6 @@ namespace Services
                         .Single(e => e.TrackId == model.TrackId);
 
                 entity.Title = model.UpdatedTitle;
-
-                //entity.PlayTimeTicks = TimeSpan.FromTicks(model.UpdatedPlayTime.Ticks).Ticks;
 
                 ctx.SaveChanges();
             }

@@ -58,7 +58,6 @@ namespace Services
                     {
                         AlbumId = entity.AlbumId,
                         Title = entity.Title,
-                        //PlayTime = TimeSpan.FromTicks(entity.PlayTimeTicks),
                         NumberOfTracks = entity.NumberOfTracks,
                         DateReleased = entity.DateReleased,
                         BandId = entity.BandId
@@ -72,7 +71,6 @@ namespace Services
             using (var ctx = new ApplicationDbContext())
             {
                 var request = ctx.Albums.Select(e => new AlbumList { AlbumId = e.AlbumId, Title = e.Title, BandId = e.BandId });
-                                                                                //PlayTime = TimeSpan.FromTicks(e.PlayTimeTicks)\\
                 return request.ToArray();
             }
         }

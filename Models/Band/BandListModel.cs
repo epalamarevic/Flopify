@@ -11,7 +11,5 @@ namespace Models.Band
         public int BandId { get; set; }
         public string Name { get; set; }
         public string Genre { get; set; }
-
-       // public int NumberOfAlbums { get; set; }
     }
 }

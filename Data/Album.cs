@@ -33,14 +33,18 @@ namespace Data
         //    set { PlayTimeTicks = value; }
         //}
 
+        private int _numberOfTracks;
         public int NumberOfTracks
         {
             get
             {
+                return _numberOfTracks;
+            }
+            set
+            {
                 using (var ctx = new ApplicationDbContext())
                 {
-                    var query = ctx.Tracks.Where(e => e.AlbumId == AlbumId).Count();
-                    return query;
+                    _numberOfTracks = ctx.Tracks.Where(e => e.AlbumId == AlbumId).Count();
                 }
             }
         }
