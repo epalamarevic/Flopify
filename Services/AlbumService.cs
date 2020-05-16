@@ -11,14 +11,12 @@ namespace Services
 {
     public class AlbumService : IAlbumService
     {
-        // Checking UserId to set later for each service
         private readonly Guid _userId;
         public AlbumService(Guid userId)
         {
             _userId = userId;
         }
 
-        // Service to Create an Album
         public void CreateAlbum(AlbumCreate model)
         {
             var entity =
@@ -36,7 +34,6 @@ namespace Services
             }
         }
 
-        // Service to Delete an Album by AlbumId
         public void DeleteAlbum(int albumId)
         {
             using (var ctx = new ApplicationDbContext())
@@ -47,11 +44,11 @@ namespace Services
             }
         }
 
-        // Service to Get a specific Album by the AlbumId
         public AlbumDetail GetAlbumById(int albumId)
         {
             using (var ctx = new ApplicationDbContext())
             {
+              
                 var entity =
                     ctx
                         .Albums
@@ -64,11 +61,11 @@ namespace Services
                         NumberOfTracks = entity.NumberOfTracks,
                         DateReleased = entity.DateReleased,
                         BandId = entity.BandId
+                       
                     };
             }
         }
 
-        // Service to Return all Albums in an IEnumerable List
         public IEnumerable<AlbumList> GetAllAlbums()
         {
             using (var ctx = new ApplicationDbContext())
@@ -78,7 +75,6 @@ namespace Services
             }
         }
 
-        // Service to Update an Album by AlbumId in the body
         public void UpdateAlbum(AlbumUpdate model)
         {
             using (var ctx = new ApplicationDbContext())
