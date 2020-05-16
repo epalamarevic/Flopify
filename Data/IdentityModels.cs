@@ -37,6 +37,7 @@ namespace Data
         public DbSet<TrackDislike>TrackDislikes { get; set; }
 
         public DbSet<Album>Albums { get; set; }
+        public DbSet<AlbumDislike> AlbumDislikes { get; set; }
 
         public DbSet<Band> Bands { get; set; }
 
