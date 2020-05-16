@@ -14,18 +14,17 @@ namespace Data
         public string Name { get; set; }
         public string Genre { get; set; }
         public string Members { get; set; }
+
         public int NumberOfAlbums
         {
             get
             {
                 using (var ctx = new ApplicationDbContext())
                 {
-                    int numberOfAlbums = 0;
-                    numberOfAlbums += ctx.Albums.Where(e => e.BandId == BandId).Count();
-                    return numberOfAlbums;
+                    var query = ctx.Albums.Where(e => e.BandId == BandId).Count();
+                    return query;
                 }
             }
-            set { NumberOfAlbums = value; }
         }
     }
 }
