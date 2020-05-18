@@ -54,11 +54,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-
+    <Compile Include="IAlbumDislikeService.cs" />
     <Compile Include="IAlbumService.cs" />
-
     <Compile Include="IBandServices.cs" />
-
     <Compile Include="IDislikeService.cs" />
     <Compile Include="ITrackServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
