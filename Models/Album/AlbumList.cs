@@ -11,5 +11,6 @@ namespace Models.Album
         public int AlbumId { get; set; }
         public string Title { get; set; }
         public int BandId { get; set; }
+
     }
 }

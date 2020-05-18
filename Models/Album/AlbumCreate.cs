@@ -10,7 +10,6 @@ namespace Models.Album
     {
         public string Title { get; set; }
         public DateTime DateReleased { get; set; }
-
         public int BandId { get; set; }
     }
 }
