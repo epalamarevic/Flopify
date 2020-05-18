@@ -24,7 +24,8 @@ namespace Services
                 {
                     Title = model.Title,
                     DateReleased = model.DateReleased,
-                    BandId = model.BandId
+                    BandId = model.BandId,
+                   
                 };
 
             using (var ctx = new ApplicationDbContext())
@@ -60,7 +61,8 @@ namespace Services
                         Title = entity.Title,
                         NumberOfTracks = entity.NumberOfTracks,
                         DateReleased = entity.DateReleased,
-                        BandId = entity.BandId
+                        BandId = entity.BandId,
+                        TotalPlayTime = entity.TotalPlaytime
                        
                     };
             }

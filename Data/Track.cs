@@ -13,7 +13,7 @@ namespace Data
         [Key]
         public int TrackId { get; set; }
         public string Title { get; set; }
-        //public long PlayTimeTicks { get; set; }
+        public int PlayTime { get; set; }
 
         [ForeignKey("Album")]
         public int AlbumId { get; set; }
