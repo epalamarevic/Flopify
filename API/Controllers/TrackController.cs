@@ -14,6 +14,13 @@ namespace API.Controllers
     [Authorize]
     public class TrackController : ApiController
     {
+
+        //Post api/track
+        /// <summary>
+        /// Create a Track
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         public IHttpActionResult PostTrack(CreateTrack model)
         {
             TrackService trackService = CreateTrackService();
@@ -26,6 +33,11 @@ namespace API.Controllers
             return Ok();
         }
 
+        //Get api/track
+        /// <summary>
+        /// Get all Tracks
+        /// </summary>
+        /// <returns></returns>
         public IHttpActionResult GetTracks()
         {
             TrackService trackService = CreateTrackService();
@@ -35,6 +47,13 @@ namespace API.Controllers
             return Ok(tracks);
         }
 
+
+        //Get api/track{id}
+        /// <summary>
+        /// Get a Track by TrackID
+        /// </summary>
+        /// <param name="id">Need "trackID" of the Track you wish to retreive </param>
+        /// <returns></returns>
         public IHttpActionResult GetTrack(int id)
         {
             TrackService trackService = CreateTrackService();
@@ -44,6 +63,12 @@ namespace API.Controllers
             return Ok(track);
         }
 
+        //Put api/track{id}
+        /// <summary>
+        /// Update a Track
+        /// </summary>
+        /// <param name="model">Need trackId to update a track</param>
+        /// <returns></returns>
         public IHttpActionResult PutTrack(UpdateTrack model)
         {
             TrackService trackService = CreateTrackService();
@@ -56,6 +81,12 @@ namespace API.Controllers
             return Ok();
         }
 
+        //Delete api/track{id}
+        /// <summary>
+        /// Delete a Track
+        /// </summary>
+        /// <param name="id">Need "trackId" of the Track you wish to remove</param>
+        /// <returns></returns>
         public IHttpActionResult DeleteTrackById(int id)
         {
             TrackService trackService = CreateTrackService();

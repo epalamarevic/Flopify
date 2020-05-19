@@ -12,7 +12,10 @@ namespace Models.Album
         public string Title { get; set; }
         public int NumberOfTracks { get; set; }
         public int TotalPlayTime { get; set; }
+
         public DateTime DateReleased { get; set; }
+
+        public int Dislikes { get; set; }
 
         public int BandId { get; set; }
     }

@@ -62,7 +62,8 @@ namespace Services
                         NumberOfTracks = entity.NumberOfTracks,
                         DateReleased = entity.DateReleased,
                         BandId = entity.BandId,
-                        TotalPlayTime = entity.TotalPlaytime
+                        TotalPlayTime = entity.TotalPlaytime,
+                        
                        
                     };
             }

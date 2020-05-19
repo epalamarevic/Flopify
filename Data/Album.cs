@@ -20,32 +20,16 @@ namespace Data
             {
                 using (var ctx = new ApplicationDbContext())
                 {
-                    var Sum = ctx.Tracks.Where(e => e.AlbumId == AlbumId).Select(e => e.PlayTime).Sum();
-                    return Sum;
+                    var playTime = ctx.Tracks.Where(e => e.AlbumId == AlbumId).Select(e => e.PlayTime).ToList();
+                    var sum = 0;
+                    for (int i = 0; i<playTime.Count(); i++)
+                    {
+                        sum += playTime[i];
+                    }
+                    return sum;
                 }
             }
         }
-
-
-
-//public long PlayTimeTicks
-//{
-//    get
-//    {
-//        using (var ctx = new ApplicationDbContext())
-//        {
-
-//            var childTracksPlayTime = ctx.Tracks.Where(e => e.AlbumId == AlbumId).Select(e => e.PlayTimeTicks).ToList();
-//            long playTime = 0;
-//            for (int i = 0; i < childTracksPlayTime.Count(); i++)
-//            {
-//                playTime += childTracksPlayTime[i];
-//            }
-//            return playTime;
-//        }
-//    }
-//    set { PlayTimeTicks = value; }
-//}
 
         private int _numberOfTracks;
         public int NumberOfTracks
@@ -65,8 +49,14 @@ namespace Data
 
         public DateTime DateReleased { get; set; }
 
+
         [ForeignKey("Band")]
         public int BandId { get; set; }
+    
         public virtual Band Band { get; set; }
+       
+
+
+
     }
 }
