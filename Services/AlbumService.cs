@@ -25,7 +25,6 @@ namespace Services
                     Title = model.Title,
                     DateReleased = model.DateReleased,
                     BandId = model.BandId,
-                   
                 };
 
             using (var ctx = new ApplicationDbContext())
@@ -62,8 +61,8 @@ namespace Services
                         NumberOfTracks = entity.NumberOfTracks,
                         DateReleased = entity.DateReleased,
                         BandId = entity.BandId,
-                        TotalPlayTime = entity.TotalPlaytime
-                       
+                        TotalPlayTime = entity.TotalPlaytime,
+                        Dislikes = entity.Dislikes
                     };
             }
         }

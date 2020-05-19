@@ -14,22 +14,20 @@ namespace Data
         public int TrackId { get; set; }
         public string Title { get; set; }
         public int PlayTime { get; set; }
-
-        [ForeignKey("Album")]
-        public int AlbumId { get; set; }
-        public virtual Album Album { get; set; }
-
         public int Dislikes
         {
             get
             {
                 using (var ctx = new ApplicationDbContext())
                 {
-                    var query = ctx.TrackDislikes.Where(e => e.TrackId == TrackId).Count();
-                    return query;
+                    var dislikes = ctx.Dislikes.Where(e => e.TrackId == TrackId && e.IsActive == true).Count();
+                    return dislikes;
                 }
             }
         }
 
+        [ForeignKey("Album")]
+        public int AlbumId { get; set; }
+        public virtual Album Album { get; set; }
     }
 }
