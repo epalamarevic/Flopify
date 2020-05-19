@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Services
 {
-    public class TrackDislikeService : IDislikeService
+    public class TrackDislikeService : ITrackDislikeService
     {
         private readonly Guid _userId;
         public TrackDislikeService(Guid userId)

@@ -20,45 +20,40 @@ namespace Data
             {
                 using (var ctx = new ApplicationDbContext())
                 {
-                    var Sum = ctx.Tracks.Where(e => e.AlbumId == AlbumId).Select(e => e.PlayTime).Sum();
-                    return Sum;
+                    var playTimeList = ctx.Tracks.Where(e => e.AlbumId == AlbumId).Select(e => e.PlayTime).ToList();
+                    var sum = playTimeList.Sum();
+                    return sum;
                 }
             }
         }
 
+        //public long PlayTimeTicks
+        //{
+        //    get
+        //    {
+        //        using (var ctx = new ApplicationDbContext())
+        //        {
 
+        //            var childTracksPlayTime = ctx.Tracks.Where(e => e.AlbumId == AlbumId).Select(e => e.PlayTimeTicks).ToList();
+        //            long playTime = 0;
+        //            for (int i = 0; i < childTracksPlayTime.Count(); i++)
+        //            {
+        //                playTime += childTracksPlayTime[i];
+        //            }
+        //            return playTime;
+        //        }
+        //    }
+        //    set { PlayTimeTicks = value; }
+        //}
 
-//public long PlayTimeTicks
-//{
-//    get
-//    {
-//        using (var ctx = new ApplicationDbContext())
-//        {
-
-//            var childTracksPlayTime = ctx.Tracks.Where(e => e.AlbumId == AlbumId).Select(e => e.PlayTimeTicks).ToList();
-//            long playTime = 0;
-//            for (int i = 0; i < childTracksPlayTime.Count(); i++)
-//            {
-//                playTime += childTracksPlayTime[i];
-//            }
-//            return playTime;
-//        }
-//    }
-//    set { PlayTimeTicks = value; }
-//}
-
-        private int _numberOfTracks;
         public int NumberOfTracks
         {
             get
             {
-                return _numberOfTracks;
-            }
-            set
-            {
                 using (var ctx = new ApplicationDbContext())
                 {
-                    _numberOfTracks = ctx.Tracks.Where(e => e.AlbumId == AlbumId).Count();
+                    var tracks = ctx.Tracks.Where(e => e.AlbumId == AlbumId).Count();
+                    return tracks;
                 }
             }
         }
@@ -68,5 +63,18 @@ namespace Data
         [ForeignKey("Band")]
         public int BandId { get; set; }
         public virtual Band Band { get; set; }
+        public int Dislikes
+        {
+            get
+            {
+                using (var ctx = new ApplicationDbContext())
+                {
+                    var query = ctx.AlbumDislikes.Where(e => e.AlbumId == AlbumId).Count();
+                    var trackDislikesList = ctx.Tracks.Where(e => e.AlbumId == AlbumId).Select(e => e.Dislikes).ToList();
+                    var trackDislikes = trackDislikesList.Sum();
+                    return query + trackDislikes;
+                }
+            }
+        }
     }
 }
