@@ -217,6 +217,7 @@
     <Compile Include="Controllers\AlbumController.cs" />
     <Compile Include="Controllers\AlbumDislikeController.cs" />
     <Compile Include="Controllers\BandController.cs" />
+    <Compile Include="Controllers\DislikeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TrackController.cs" />
     <Compile Include="Controllers\TrackDislikeController.cs" />

@@ -57,6 +57,7 @@
     <Compile Include="AlbumDislikeService.cs" />
     <Compile Include="AlbumService.cs" />
     <Compile Include="BandServices.cs" />
+    <Compile Include="DislikeService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TrackDislikeService.cs" />
     <Compile Include="TrackService.cs" />

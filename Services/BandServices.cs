@@ -41,8 +41,6 @@ namespace Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                int numberOfAlbums = ctx.Albums.Where(e => e.BandId == bandId).Count();
-
                 var entity = ctx.Bands.Single(e => e.BandId == bandId);
 
                 return new BandDetailModel
@@ -51,7 +49,8 @@ namespace Services
                     Name = entity.Name,
                     Genre = entity.Genre,
                     Members = entity.Members,
-                    NumberOfAlbums = numberOfAlbums
+                    NumberOfAlbums = entity.NumberOfAlbums,
+                    Dislikes = entity.Dislikes
                 };
             }
         }

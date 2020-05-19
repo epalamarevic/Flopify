@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -20,29 +20,44 @@ namespace Data
             {
                 using (var ctx = new ApplicationDbContext())
                 {
+
                     var playTime = ctx.Tracks.Where(e => e.AlbumId == AlbumId).Select(e => e.PlayTime).ToList();
                     var sum = 0;
                     for (int i = 0; i<playTime.Count(); i++)
                     {
                         sum += playTime[i];
                     }
+
+                    var playTimeList = ctx.Tracks.Where(e => e.AlbumId == AlbumId).Select(e => e.PlayTime).ToList();
+                    var sum = playTimeList.Sum();
+
                     return sum;
                 }
             }
         }
 
         private int _numberOfTracks;
+
         public int NumberOfTracks
         {
             get
             {
-                return _numberOfTracks;
+                using (var ctx = new ApplicationDbContext())
+                {
+                    var tracks = ctx.Tracks.Where(e => e.AlbumId == AlbumId).Count();
+                    return tracks;
+                }
             }
-            set
+        }
+
+        public int Dislikes
+        {
+            get
             {
                 using (var ctx = new ApplicationDbContext())
                 {
-                    _numberOfTracks = ctx.Tracks.Where(e => e.AlbumId == AlbumId).Count();
+                    var dislikes = ctx.Dislikes.Where(e => e.AlbumId == AlbumId && e.IsActive == true).Count();
+                    return dislikes;
                 }
             }
         }
@@ -55,8 +70,5 @@ namespace Data
     
         public virtual Band Band { get; set; }
        
-
-
-
     }
 }

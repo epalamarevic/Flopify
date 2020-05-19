@@ -41,6 +41,7 @@ namespace Data
 
         public DbSet<Band> Bands { get; set; }
 
+        public DbSet<Dislike> Dislikes { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

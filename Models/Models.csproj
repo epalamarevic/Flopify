@@ -63,6 +63,9 @@
     <Compile Include="Band\BandDetailModel.cs" />
     <Compile Include="Band\BandEditModel.cs" />
     <Compile Include="Band\BandListModel.cs" />
+    <Compile Include="Dislike\CreateDislikeModel.cs" />
+    <Compile Include="Dislike\DeleteDislikeModel.cs" />
+    <Compile Include="Dislike\ListDislikeModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TrackDislike\TrackDislikeCreate.cs" />
     <Compile Include="TrackDislike\TrackDislikeList.cs" />
