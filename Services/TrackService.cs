@@ -106,6 +106,7 @@ namespace Services
                         .Single(e => e.TrackId == model.TrackId);
 
                 entity.Title = model.UpdatedTitle;
+                entity.PlayTime = model.PlayTime;
 
                 ctx.SaveChanges();
             }

@@ -12,7 +12,13 @@ namespace API.Controllers
 {
     [Authorize]
     public class AlbumController : ApiController
-    {
+    {   
+        //Post api/album
+        /// <summary>
+        /// Create an Album for Band.
+        /// </summary>
+        /// <param name="model">Mandatory: need to have "BandId"</param>
+        /// <returns></returns>
         public IHttpActionResult PostAlbum(AlbumCreate model)
         {
             AlbumService albumService = CreateAlbumService();
@@ -24,7 +30,11 @@ namespace API.Controllers
 
             return Ok();
         }
-
+        //Get api/album
+        /// <summary>
+        /// Get all Albums
+        /// </summary>
+        /// <returns></returns>
         public IHttpActionResult GetAlbums()
         {
             AlbumService albumService = CreateAlbumService();
@@ -34,6 +44,12 @@ namespace API.Controllers
             return Ok(albums);
         }
 
+        //Get api/album{id}
+        /// <summary>
+        /// Get Album by AlbumID
+        /// </summary>
+        /// <param name="id">Mandatory: Need AlbumID of the Album </param>
+        /// <returns></returns>
         public IHttpActionResult GetAlbumById(int id)
         {
             AlbumService albumService = CreateAlbumService();
@@ -42,6 +58,13 @@ namespace API.Controllers
 
             return Ok(album);
         }
+
+        //Put api/album
+        /// <summary>
+        /// Update a Album
+        /// </summary>
+        /// <param name="model">Mandatory:Need AlbumId</param>
+        /// <returns></returns>
 
         public IHttpActionResult PutAlbum(AlbumUpdate model)
         {
@@ -55,6 +78,12 @@ namespace API.Controllers
             return Ok();
         }
 
+        //Delete api/album{id}
+        /// <summary>
+        /// Delete a Album
+        /// </summary>
+        /// <param name="id">Need the AlbumID of the Album you wish to delete </param>
+        /// <returns></returns>
         public IHttpActionResult DeleteAlbumById(int id)
         {
             AlbumService albumService = CreateAlbumService();

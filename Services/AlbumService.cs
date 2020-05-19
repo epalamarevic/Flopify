@@ -1,4 +1,4 @@
-﻿using Contracts;
+using Contracts;
 using Data;
 using Models.Album;
 using System;
@@ -62,7 +62,9 @@ namespace Services
                         DateReleased = entity.DateReleased,
                         BandId = entity.BandId,
                         TotalPlayTime = entity.TotalPlaytime,
+
                         Dislikes = entity.Dislikes
+
                     };
             }
         }

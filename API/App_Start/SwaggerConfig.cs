@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.Web.Http.Description;
 using System.Web.Http.Filters;
 using API;
+using System;
+using System.Xml.XPath;
 
 [assembly: PreApplicationStartMethod(typeof(SwaggerConfig), "Register")]
 
@@ -111,7 +113,7 @@ namespace API
                     // hold additional metadata for an API. Version and title are required but you can also provide
                     // additional fields by chaining methods off SingleApiVersion.
                     //
-                    c.SingleApiVersion("v1", "ElevenNote.WebAPI");
+                    c.SingleApiVersion("v1", "Flopify API");
 
                     // Enable adding the Authorization header to [Authorize]d endpoints.
                     c.OperationFilter(() => new AddAuthorizationHeaderParameterOperationFilter());
@@ -183,7 +185,7 @@ namespace API
                     // those comments into the generated docs and UI. You can enable this by providing the path to one or
                     // more Xml comment files.
                     //
-                    //c.IncludeXmlComments(GetXmlCommentsPath());
+                    c.IncludeXmlComments(GetXmlCommentsPath());
 
                     // Swashbuckle makes a best attempt at generating Swagger compliant JSON schemas for the various types
                     // exposed in your API. However, there may be occasions when more control of the output is needed.
@@ -327,6 +329,11 @@ namespace API
                     //
                     //c.EnableApiKeySupport("apiKey", "header");
                 });
+        }
+
+        private static string GetXmlCommentsPath()
+        {
+            return System.AppDomain.CurrentDomain.BaseDirectory + @"bin\API.xml";
         }
     }
 
