@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Models.TrackDislike
+namespace Models.Dislike
 {
-    public class TrackDislikeCreate
+    public class CreateBandDislikeModel
     {
-        public int TrackId { get; set; }
+        public int BandId { get; set; }
     }
 }

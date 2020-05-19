@@ -11,20 +11,53 @@ using System.Web.Http;
 namespace API.Controllers
 {
     [Authorize]
+    [RoutePrefix("api/Dislikes")]
     public class DislikeController : ApiController
     {
-        public IHttpActionResult PostDislike(CreateDislikeModel dislike)
+        [HttpPost]
+        [Route("Track")]
+        public IHttpActionResult PostTrackDislike(CreateTrackDislikeModel dislike)
         {
             DislikeService dislikeService = CreateDislikeService();
 
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            dislikeService.CreateDislike(dislike);
+            dislikeService.CreateTrackDislike(dislike);
 
             return Ok();
         }
 
+        [HttpPost]
+        [Route("Album")]
+        public IHttpActionResult PostAlbumDislike(CreateAlbumDislikeModel dislike)
+        {
+            DislikeService dislikeService = CreateDislikeService();
+
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            dislikeService.CreateAlbumDislike(dislike);
+
+            return Ok();
+        }
+
+        [HttpPost]
+        [Route("Band")]
+        public IHttpActionResult PostBandDislike(CreateBandDislikeModel dislike)
+        {
+            DislikeService dislikeService = CreateDislikeService();
+
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            dislikeService.CreateBandDislike(dislike);
+
+            return Ok();
+        }
+
+        [HttpGet]
+        [Route]
         public IHttpActionResult GetDislikes()
         {
             DislikeService dislikeService = CreateDislikeService();
@@ -34,6 +67,8 @@ namespace API.Controllers
             return Ok(dislikes);
         }
 
+        [HttpDelete]
+        [Route]
         public IHttpActionResult DeleteDislike(DeleteDislikeModel dislike)
         {
             DislikeService dislikeService = CreateDislikeService();

@@ -62,9 +62,7 @@ namespace Services
                         DateReleased = entity.DateReleased,
                         BandId = entity.BandId,
                         TotalPlayTime = entity.TotalPlaytime,
-
                         Dislikes = entity.Dislikes
-
                     };
             }
         }
