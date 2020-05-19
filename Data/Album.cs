@@ -20,14 +20,6 @@ namespace Data
             {
                 using (var ctx = new ApplicationDbContext())
                 {
-
-                    var playTime = ctx.Tracks.Where(e => e.AlbumId == AlbumId).Select(e => e.PlayTime).ToList();
-                    var sum = 0;
-                    for (int i = 0; i<playTime.Count(); i++)
-                    {
-                        sum += playTime[i];
-                    }
-
                     var playTimeList = ctx.Tracks.Where(e => e.AlbumId == AlbumId).Select(e => e.PlayTime).ToList();
                     var sum = playTimeList.Sum();
 
@@ -35,8 +27,6 @@ namespace Data
                 }
             }
         }
-
-        private int _numberOfTracks;
 
         public int NumberOfTracks
         {

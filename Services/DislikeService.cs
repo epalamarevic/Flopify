@@ -17,7 +17,7 @@ namespace Services
             _userId = userId;
         }
 
-        public void CreateDislike(CreateDislikeModel dislike)
+        public void CreateTrackDislike(CreateTrackDislikeModel dislike)
         {
             var entity = new Dislike()
             {
@@ -34,11 +34,42 @@ namespace Services
             }
         }
 
+        public void CreateAlbumDislike(CreateAlbumDislikeModel dislike)
+        {
+            var entity = new Dislike()
+            {
+                UserId = _userId,
+                BandId = dislike.BandId,
+                AlbumId = dislike.AlbumId
+            };
+
+            using (var ctx = new ApplicationDbContext())
+            {
+                ctx.Dislikes.Add(entity);
+                ctx.SaveChanges();
+            }
+        }
+
+        public void CreateBandDislike(CreateBandDislikeModel dislike)
+        {
+            var entity = new Dislike()
+            {
+                UserId = _userId,
+                BandId = dislike.BandId
+            };
+
+            using (var ctx = new ApplicationDbContext())
+            {
+                ctx.Dislikes.Add(entity);
+                ctx.SaveChanges();
+            }
+        }
+
         public IEnumerable<ListDislikeModel> ListDislikes()
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var query = ctx.Dislikes.Where(e => e.IsActive == true).Select(e => new ListDislikeModel { DislikeId = e.DislikeId, BandId = e.BandId, AlbumId = e.AlbumId, TrackId = e.AlbumId });
+                var query = ctx.Dislikes.Where(e => e.IsActive == true).Select(e => new ListDislikeModel { DislikeId = e.DislikeId, BandId = e.BandId, AlbumId = e.AlbumId, TrackId = e.TrackId });
                 return query.ToArray();
             }
         }

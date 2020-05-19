@@ -34,13 +34,8 @@ namespace Data
         }
 
         public DbSet<Track> Tracks { get; set; }
-        public DbSet<TrackDislike>TrackDislikes { get; set; }
-
-        public DbSet<Album>Albums { get; set; }
-        public DbSet<AlbumDislike> AlbumDislikes { get; set; }
-
+        public DbSet<Album> Albums { get; set; }
         public DbSet<Band> Bands { get; set; }
-
         public DbSet<Dislike> Dislikes { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
