@@ -13,6 +13,7 @@ namespace Data
         [Key]
         public int DislikeId { get; set; }
         public Guid UserId { get; set; }
+        public bool IsActive { get; set; } = true;
 
         [ForeignKey("Band")]
         public int BandId { get; set; }

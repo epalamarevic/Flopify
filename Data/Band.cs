@@ -26,5 +26,17 @@ namespace Data
                 }
             }
         }
+
+        public int Dislikes
+        {
+            get
+            {
+                using (var ctx = new ApplicationDbContext())
+                {
+                    var dislikes = ctx.Dislikes.Where(e => e.BandId == BandId && e.IsActive == true).Count();
+                    return dislikes;
+                }
+            }
+        }
     }
 }

@@ -38,7 +38,7 @@ namespace Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var query = ctx.Dislikes.Select(e => new ListDislikeModel { DislikeId = e.DislikeId, BandId = e.BandId, AlbumId = e.AlbumId, TrackId = e.AlbumId });
+                var query = ctx.Dislikes.Where(e => e.IsActive == true).Select(e => new ListDislikeModel { DislikeId = e.DislikeId, BandId = e.BandId, AlbumId = e.AlbumId, TrackId = e.AlbumId });
                 return query.ToArray();
             }
         }
@@ -48,7 +48,7 @@ namespace Services
             using (var ctx = new ApplicationDbContext())
             {
                 var itemToDelete = ctx.Dislikes.Single(e => e.DislikeId == dislike.DislikeId && e.UserId == _userId);
-                ctx.Dislikes.Remove(itemToDelete);
+                itemToDelete.IsActive = false;
                 ctx.SaveChanges();
             }
         }

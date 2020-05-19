@@ -58,23 +58,22 @@ namespace Data
             }
         }
 
-        public DateTime DateReleased { get; set; }
-
-        [ForeignKey("Band")]
-        public int BandId { get; set; }
-        public virtual Band Band { get; set; }
         public int Dislikes
         {
             get
             {
                 using (var ctx = new ApplicationDbContext())
                 {
-                    var query = ctx.AlbumDislikes.Where(e => e.AlbumId == AlbumId).Count();
-                    var trackDislikesList = ctx.Tracks.Where(e => e.AlbumId == AlbumId).Select(e => e.Dislikes).ToList();
-                    var trackDislikes = trackDislikesList.Sum();
-                    return query + trackDislikes;
+                    var dislikes = ctx.Dislikes.Where(e => e.AlbumId == AlbumId && e.IsActive == true).Count();
+                    return dislikes;
                 }
             }
         }
+
+        public DateTime DateReleased { get; set; }
+
+        [ForeignKey("Band")]
+        public int BandId { get; set; }
+        public virtual Band Band { get; set; }
     }
 }

@@ -25,7 +25,6 @@ namespace Services
                     Title = model.Title,
                     DateReleased = model.DateReleased,
                     BandId = model.BandId,
-                   
                 };
 
             using (var ctx = new ApplicationDbContext())
