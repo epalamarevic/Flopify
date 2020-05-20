@@ -25,7 +25,8 @@ namespace Services
                 new Track()
                 {
                     Title = model.Title,
-                    AlbumId = model.AlbumId
+                    AlbumId = model.AlbumId,
+                    PlayTime = model.PlayTime
                 };
 
             using (var ctx = new ApplicationDbContext())
@@ -65,6 +66,7 @@ namespace Services
                                 {
                                     TrackId= e.TrackId,
                                     Title = e.Title,
+                                    PlayTime = e.PlayTime
                                 }
                         );
 
@@ -87,7 +89,8 @@ namespace Services
                         TrackId = entity.TrackId,
                         Title = entity.Title,
                         Dislikes = entity.Dislikes,
-                        AlbumId = entity.AlbumId
+                        AlbumId = entity.AlbumId,
+                        PlayTime = entity.PlayTime
                     };
             }
         }
@@ -103,6 +106,7 @@ namespace Services
                         .Single(e => e.TrackId == model.TrackId);
 
                 entity.Title = model.UpdatedTitle;
+                entity.PlayTime = model.PlayTime;
 
                 ctx.SaveChanges();
             }

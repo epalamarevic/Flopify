@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -14,45 +14,51 @@ namespace Data
         public int AlbumId { get; set; }
         public string Title { get; set; }
 
-        //public long PlayTimeTicks
-        //{
-        //    get
-        //    {
-        //        using (var ctx = new ApplicationDbContext())
-        //        {
-                    
-        //            var childTracksPlayTime = ctx.Tracks.Where(e => e.AlbumId == AlbumId).Select(e => e.PlayTimeTicks).ToList();
-        //            long playTime = 0;
-        //            for (int i = 0; i < childTracksPlayTime.Count(); i++)
-        //            {
-        //                playTime += childTracksPlayTime[i];
-        //            }
-        //            return playTime;
-        //        }
-        //    }
-        //    set { PlayTimeTicks = value; }
-        //}
+        public int TotalPlaytime
+        {
+            get
+            {
+                using (var ctx = new ApplicationDbContext())
+                {
+                    var playTimeList = ctx.Tracks.Where(e => e.AlbumId == AlbumId).Select(e => e.PlayTime).ToList();
+                    var sum = playTimeList.Sum();
 
-        private int _numberOfTracks;
+                    return sum;
+                }
+            }
+        }
+
         public int NumberOfTracks
         {
             get
             {
-                return _numberOfTracks;
+                using (var ctx = new ApplicationDbContext())
+                {
+                    var tracks = ctx.Tracks.Where(e => e.AlbumId == AlbumId).Count();
+                    return tracks;
+                }
             }
-            set
+        }
+
+        public int Dislikes
+        {
+            get
             {
                 using (var ctx = new ApplicationDbContext())
                 {
-                    _numberOfTracks = ctx.Tracks.Where(e => e.AlbumId == AlbumId).Count();
+                    var dislikes = ctx.Dislikes.Where(e => e.AlbumId == AlbumId && e.IsActive == true).Count();
+                    return dislikes;
                 }
             }
         }
 
         public DateTime DateReleased { get; set; }
 
+
         [ForeignKey("Band")]
         public int BandId { get; set; }
+    
         public virtual Band Band { get; set; }
+       
     }
 }

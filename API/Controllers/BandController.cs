@@ -12,7 +12,13 @@ namespace API.Controllers
     [Authorize]
     public class BandController : ApiController
     {
-        public IHttpActionResult PostTrack(BandCreateModel band)
+        //Post api/band
+        /// <summary>
+        /// Create a Band.
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public IHttpActionResult PostBand(BandCreateModel band)
         {
             BandServices bandService = new BandServices();
 
@@ -23,8 +29,12 @@ namespace API.Controllers
 
             return Ok();
         }
-
-        public IHttpActionResult GetTracks()
+        //Get api/band
+        /// <summary>
+        /// Get all Bands
+        /// </summary>
+        /// <returns></returns>
+        public IHttpActionResult GetBands()
         {
             BandServices bandService = new BandServices();
 
@@ -33,7 +43,13 @@ namespace API.Controllers
             return Ok(tracks);
         }
 
-        public IHttpActionResult GetTrack(int id)
+        //Get api/Band
+        /// <summary>
+        /// Get Band by BandID.
+        /// </summary>
+        /// <param name="id">Mandatory: Need BandId of the Band you wish to retreive.</param>
+        /// <returns></returns>
+        public IHttpActionResult GetBand(int id)
         {
             BandServices bandService = new BandServices();
 
@@ -42,7 +58,13 @@ namespace API.Controllers
             return Ok(track);
         }
 
-        public IHttpActionResult PutTrack(BandEditModel band)
+        //Put api/band{id}
+        /// <summary>
+        /// Update a Band
+        /// </summary>
+        /// <param name="band">Need BandId to update band.</param>
+        /// <returns></returns>
+        public IHttpActionResult PutBand(BandEditModel band)
         {
             BandServices bandService = new BandServices();
 
@@ -53,8 +75,14 @@ namespace API.Controllers
 
             return Ok();
         }
+        //Delete api/band{id}
+        /// <summary>
+        /// Delete a Band
+        /// </summary>
+        /// <param name="id">Need "BandId" of the Band you wish to remove.</param>
+        /// <returns></returns>
 
-        public IHttpActionResult DeleteTrackById(int id)
+        public IHttpActionResult DeleteBandById(int id)
         {
             BandServices bandService = new BandServices();
 

@@ -10,5 +10,6 @@ namespace Models.Track
     {
         public int TrackId { get; set; }
         public string Title { get; set; }
+        public int PlayTime { get; set; }
     }
 }
