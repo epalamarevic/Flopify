@@ -9,15 +9,22 @@ using System.Threading.Tasks;
 
 namespace Services
 {
-    public class BandServices : IBandServices
+    public class BandService : IBandServices
     {
+        private readonly Guid _userId;
+        public BandService(Guid userId)
+        {
+            _userId = userId;
+        }
+
         public void CreateBand(BandCreateModel band)
         {
             var entity = new Band()
             {
                 Name = band.Name,
                 Genre = band.Genre,
-                Members = band.Members
+                Members = band.Members,
+                UserId = _userId
             };
 
             using (var ctx = new ApplicationDbContext())
@@ -59,7 +66,8 @@ namespace Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.Bands.Single(e => e.BandId == band.BandId);
+                var entity = ctx.Bands.Single(e => e.BandId == band.BandId/* && e.UserId == _userId -Uncomment this to ensure that Bands are only able to be edited by the user that created them- */);
+                // Uncomment the portion above to ensure that Bands are only able to be edited by the user that created them
 
                 entity.Name = band.Name;
                 entity.Genre = band.Genre;
@@ -73,7 +81,8 @@ namespace Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.Bands.Single(e => e.BandId == bandId);
+                var entity = ctx.Bands.Single(e => e.BandId == bandId/* && e.UserId == _userId*/);
+                // Uncomment the portion above to ensure that Bands are only able to be deleted by the user that created them
 
                 ctx.Bands.Remove(entity);
 

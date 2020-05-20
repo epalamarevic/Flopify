@@ -26,7 +26,8 @@ namespace Services
                 {
                     Title = model.Title,
                     AlbumId = model.AlbumId,
-                    PlayTime = model.PlayTime
+                    PlayTime = model.PlayTime,
+                    UserId = _userId
                 };
 
             using (var ctx = new ApplicationDbContext())
@@ -44,7 +45,8 @@ namespace Services
                 var entity =
                     ctx
                         .Tracks
-                        .Single(e => e.TrackId == trackId);
+                        .Single(e => e.TrackId == trackId/* && e.UserId == _userId*/);
+                // Uncomment the portion above to ensure that Tracks are only able to be deleted by the user that created them
 
                 ctx.Tracks.Remove(entity);
 
@@ -103,7 +105,8 @@ namespace Services
                 var entity =
                     ctx
                         .Tracks
-                        .Single(e => e.TrackId == model.TrackId);
+                        .Single(e => e.TrackId == model.TrackId/* && e.UserId == _userId*/);
+                // Uncomment the portion above to ensure that Tracks are only able to be edited by the user that created them
 
                 entity.Title = model.UpdatedTitle;
                 entity.PlayTime = model.PlayTime;

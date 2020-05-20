@@ -57,8 +57,7 @@ namespace Data
 
         [ForeignKey("Band")]
         public int BandId { get; set; }
-    
         public virtual Band Band { get; set; }
-       
+        public Guid UserId { get; set; }
     }
 }
