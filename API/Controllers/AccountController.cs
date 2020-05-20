@@ -21,7 +21,7 @@ using Data;
 namespace API.Controllers
 {
     [Authorize]
-    [RoutePrefix("api/Account")]
+    [RoutePrefix("Flopify/Account")]
     public class AccountController : ApiController
     {
         private const string LocalLoginProvider = "Local";

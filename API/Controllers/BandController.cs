@@ -10,6 +10,7 @@ using System.Web.Http;
 namespace API.Controllers
 {
     [Authorize]
+    [RoutePrefix("Flopify")]
     public class BandController : ApiController
     {
         //Post api/band
@@ -18,6 +19,9 @@ namespace API.Controllers
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
+      
+        [HttpPost]
+        [Route("Band")]
         public IHttpActionResult PostBand(BandCreateModel band)
         {
             BandServices bandService = new BandServices();
@@ -34,6 +38,8 @@ namespace API.Controllers
         /// Get all Bands
         /// </summary>
         /// <returns></returns>
+       [HttpGet]
+       [Route("Band")]
         public IHttpActionResult GetBands()
         {
             BandServices bandService = new BandServices();
@@ -49,6 +55,8 @@ namespace API.Controllers
         /// </summary>
         /// <param name="id">Mandatory: Need BandId of the Band you wish to retreive.</param>
         /// <returns></returns>
+        [HttpGet]
+        [Route("Band/{id}")]
         public IHttpActionResult GetBand(int id)
         {
             BandServices bandService = new BandServices();
@@ -64,6 +72,8 @@ namespace API.Controllers
         /// </summary>
         /// <param name="band">Need BandId to update band.</param>
         /// <returns></returns>
+        [HttpPut]
+        [Route("Band")]
         public IHttpActionResult PutBand(BandEditModel band)
         {
             BandServices bandService = new BandServices();
@@ -81,7 +91,8 @@ namespace API.Controllers
         /// </summary>
         /// <param name="id">Need "BandId" of the Band you wish to remove.</param>
         /// <returns></returns>
-
+        [HttpDelete]
+        [Route("Band/{id}")]
         public IHttpActionResult DeleteBandById(int id)
         {
             BandServices bandService = new BandServices();
