@@ -8,6 +8,7 @@ using System.Web.Http;
 namespace API.Controllers
 {
     [Authorize]
+    [RoutePrefix("Flopify")]
     public class ValuesController : ApiController
     {
         // GET api/values

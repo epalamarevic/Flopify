@@ -11,9 +11,10 @@ using System.Web.Http;
 namespace API.Controllers
 {
     [Authorize]
-    [RoutePrefix("api/Dislikes")]
+    [RoutePrefix("Flopify/Dislikes")]
     public class DislikeController : ApiController
     {
+        //Post api/dislike/track
         /// <summary>
         /// Create a Dislike for Track
         /// </summary>
@@ -33,7 +34,7 @@ namespace API.Controllers
 
             return Ok();
         }
-
+        //Post api/dislike/album
         /// <summary>
         /// Create a Dislike for Album
         /// </summary>
@@ -52,7 +53,7 @@ namespace API.Controllers
 
             return Ok();
         }
-
+        //post api/dislike/band
         /// <summary>
         /// Create a Dislike for Band
         /// </summary>
@@ -71,6 +72,7 @@ namespace API.Controllers
 
             return Ok();
         }
+        //Get api/dislikes
         /// <summary>
         /// Get all Dislikes
         /// </summary>
@@ -85,7 +87,7 @@ namespace API.Controllers
 
             return Ok(dislikes);
         }
-
+        //Delete api/dislike{id}
         /// <summary>
         /// Delete a Dislike
         /// </summary>

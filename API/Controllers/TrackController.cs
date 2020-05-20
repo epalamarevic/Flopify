@@ -12,6 +12,7 @@ using System.Web.Http;
 namespace API.Controllers
 {
     [Authorize]
+    [RoutePrefix("Flopify")]
     public class TrackController : ApiController
     {
 
@@ -21,6 +22,8 @@ namespace API.Controllers
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
+        [HttpPost]
+        [Route("Track")]
         public IHttpActionResult PostTrack(CreateTrack model)
         {
             TrackService trackService = CreateTrackService();
@@ -38,6 +41,8 @@ namespace API.Controllers
         /// Get all Tracks
         /// </summary>
         /// <returns></returns>
+        [HttpGet]
+        [Route("Track")]
         public IHttpActionResult GetTracks()
         {
             TrackService trackService = CreateTrackService();
@@ -54,6 +59,8 @@ namespace API.Controllers
         /// </summary>
         /// <param name="id">Need "trackID" of the Track you wish to retreive </param>
         /// <returns></returns>
+       [HttpGet]
+       [Route("Track/{id}")]
         public IHttpActionResult GetTrack(int id)
         {
             TrackService trackService = CreateTrackService();
@@ -69,6 +76,8 @@ namespace API.Controllers
         /// </summary>
         /// <param name="model">Need trackId to update a track</param>
         /// <returns></returns>
+       [HttpPut]
+       [Route("Track")]
         public IHttpActionResult PutTrack(UpdateTrack model)
         {
             TrackService trackService = CreateTrackService();
@@ -87,6 +96,8 @@ namespace API.Controllers
         /// </summary>
         /// <param name="id">Need "trackId" of the Track you wish to remove</param>
         /// <returns></returns>
+        [HttpDelete]
+        [Route("Track/{id}")]
         public IHttpActionResult DeleteTrackById(int id)
         {
             TrackService trackService = CreateTrackService();
