@@ -25,6 +25,7 @@ namespace Services
                     Title = model.Title,
                     DateReleased = model.DateReleased,
                     BandId = model.BandId,
+                    UserId = _userId
                 };
 
             using (var ctx = new ApplicationDbContext())
@@ -38,7 +39,9 @@ namespace Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var itemToDelete = ctx.Albums.Single(e => e.AlbumId == albumId);
+                var itemToDelete = ctx.Albums.Single(e => e.AlbumId == albumId/* && e.UserId == _userId*/);
+                // Uncomment the portion above to ensure that Albums are only able to be deleted by the user that created them
+
                 ctx.Albums.Remove(itemToDelete);
                 ctx.SaveChanges();
             }
@@ -83,7 +86,8 @@ namespace Services
                 var entity =
                     ctx
                         .Albums
-                        .Single(e => e.AlbumId == model.AlbumId);
+                        .Single(e => e.AlbumId == model.AlbumId/* && e.UserId == _userId*/);
+                // Uncomment the portion above to ensure that Albums are only able to be edited by the user that created them
 
                 entity.Title = model.Title;
                 entity.DateReleased = model.DateReleased;

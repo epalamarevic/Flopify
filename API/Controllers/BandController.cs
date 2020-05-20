@@ -20,7 +20,7 @@ namespace API.Controllers
         /// <returns></returns>
         public IHttpActionResult PostBand(BandCreateModel band)
         {
-            BandServices bandService = new BandServices();
+            BandService bandService = new BandService();
 
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -36,7 +36,7 @@ namespace API.Controllers
         /// <returns></returns>
         public IHttpActionResult GetBands()
         {
-            BandServices bandService = new BandServices();
+            BandService bandService = new BandService();
 
             var tracks = bandService.GetAllBands();
 
@@ -51,7 +51,7 @@ namespace API.Controllers
         /// <returns></returns>
         public IHttpActionResult GetBand(int id)
         {
-            BandServices bandService = new BandServices();
+            BandService bandService = new BandService();
 
             var track = bandService.GetBandById(id);
 
@@ -66,7 +66,7 @@ namespace API.Controllers
         /// <returns></returns>
         public IHttpActionResult PutBand(BandEditModel band)
         {
-            BandServices bandService = new BandServices();
+            BandService bandService = new BandService();
 
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -84,7 +84,7 @@ namespace API.Controllers
 
         public IHttpActionResult DeleteBandById(int id)
         {
-            BandServices bandService = new BandServices();
+            BandService bandService = new BandService();
 
             bandService.DeleteBand(id);
 

@@ -38,5 +38,7 @@ namespace Data
                 }
             }
         }
+
+        public Guid UserId { get; set; }
     }
 }
