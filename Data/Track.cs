@@ -30,5 +30,6 @@ namespace Data
         public int AlbumId { get; set; }
         public virtual Album Album { get; set; }
         public Guid UserId { get; set; }
+        public bool IsActive { get; set; } = true;
     }
 }

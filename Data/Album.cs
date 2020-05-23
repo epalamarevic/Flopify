@@ -59,5 +59,6 @@ namespace Data
         public int BandId { get; set; }
         public virtual Band Band { get; set; }
         public Guid UserId { get; set; }
+        public bool IsActive { get; set; } = true;
     }
 }

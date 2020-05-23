@@ -11,12 +11,14 @@ namespace Services
 {
     public class AlbumService : IAlbumService
     {
+        // Constructor to catch the User Id that is passed in through the Controller
         private readonly Guid _userId;
         public AlbumService(Guid userId)
         {
             _userId = userId;
         }
 
+        // Method to Create an Album
         public void CreateAlbum(AlbumCreate model)
         {
             var entity =
@@ -35,18 +37,17 @@ namespace Services
             }
         }
 
-        public void DeleteAlbum(int albumId)
+        // Method to List all Albums
+        public IEnumerable<AlbumList> GetAllAlbums()
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var itemToDelete = ctx.Albums.Single(e => e.AlbumId == albumId/* && e.UserId == _userId*/);
-                // Uncomment the portion above to ensure that Albums are only able to be deleted by the user that created them
-
-                ctx.Albums.Remove(itemToDelete);
-                ctx.SaveChanges();
+                var request = ctx.Albums.Where(e => e.IsActive == true).Select(e => new AlbumList { AlbumId = e.AlbumId, Title = e.Title, BandId = e.BandId });
+                return request.ToArray();
             }
         }
 
+        // Method to Get a specific Album by the Album Id
         public AlbumDetail GetAlbumById(int albumId)
         {
             using (var ctx = new ApplicationDbContext())
@@ -70,15 +71,7 @@ namespace Services
             }
         }
 
-        public IEnumerable<AlbumList> GetAllAlbums()
-        {
-            using (var ctx = new ApplicationDbContext())
-            {
-                var request = ctx.Albums.Select(e => new AlbumList { AlbumId = e.AlbumId, Title = e.Title, BandId = e.BandId });
-                return request.ToArray();
-            }
-        }
-
+        // Method to Update an Album by the Album Id
         public void UpdateAlbum(AlbumUpdate model)
         {
             using (var ctx = new ApplicationDbContext())
@@ -92,6 +85,19 @@ namespace Services
                 entity.Title = model.Title;
                 entity.DateReleased = model.DateReleased;
 
+                ctx.SaveChanges();
+            }
+        }
+
+        // Method to Delete an Album by the Album Id
+        public void DeleteAlbum(int albumId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var itemToDelete = ctx.Albums.Single(e => e.AlbumId == albumId/* && e.UserId == _userId*/);
+                // Uncomment the portion above to ensure that Albums are only able to be deleted by the user that created them
+
+                itemToDelete.IsActive = false;
                 ctx.SaveChanges();
             }
         }

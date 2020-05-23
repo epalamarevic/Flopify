@@ -40,5 +40,6 @@ namespace Data
         }
 
         public Guid UserId { get; set; }
+        public bool IsActive { get; set; } = true;
     }
 }
