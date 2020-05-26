@@ -1,18 +1,15 @@
-# Flopify 🎵
-(flop-ify)
+# Flopify (flop-ify)
+
 Do you listen to the top 100 songs on iTUNES or the radio? Have you ever heard of those non-popular songs? This repo was created to provide listeners with a finer appreciation of quality music by giving them the worst.
 This repository is the back-end API of a music streaming site. Only this repo creates music for listeners where Bands, Albums and Tracks are disliked the most, hence music that flopped. 
 
-Installation
+# Installation
 Create a repository folder. Pull down the repo in your own folder. You can run the program by opening up the solution in Visual Studio.
 
-Installation
-Create a repository folder. Pull down the repo in your own folder. You can run the program by opening up the solution in Visual Studio. 
-
-How to Use the Project
+# How to Use the Project
 Once you open the project in Visual Studio, run the project. You should have a site opened looking something like this “https://localhost:00000”. You may run the project in Postman or Swagger. 
 
-Using the Project in Swagger
+# Using the Project in Swagger
 Open SwaggerUI by adding “/swagger” to the end of the http link. 
 In order to use the project methods you need to register an Account and receive a Token to authorize the requests. 
 
@@ -20,16 +17,16 @@ Click on the Account tab. Go to POST Flopify/Account/Register. Under value, incl
 Once your account is registered, you may authorize requests for Band, Album, and Track.
 Follow the descriptions for each of the Rest Methods; Post, Get, Put, Delete for the entities of each music type. Each of the methods give you a description of what it does and a description of what is needed.
  
-Contribution
+# Contribution
 XML programming language was used in contribution to Swagger UI. When you run the project in Swagger it specifically shows you what each RestAPI Method is doing. 
 Postman was also a contributor to the project. If you prefer the use of postman, please do so. 
 
 
-Credits
+# Credits
 Emina Palamarevic 
 Abrame Pithey
 
-License
+# License
 This project is in correspondence with MIT License.
 
 Copyright (c) .NET Foundation and Contributors
