@@ -88,9 +88,9 @@
     <Compile Include="Band.cs" />
     <Compile Include="Dislike.cs" />
     <Compile Include="IdentityModels.cs" />
-    <Compile Include="Migrations\202005261631306_recreateDatabase.cs" />
-    <Compile Include="Migrations\202005261631306_recreateDatabase.Designer.cs">
-      <DependentUpon>202005261631306_recreateDatabase.cs</DependentUpon>
+    <Compile Include="Migrations\202005262259205_initial.cs" />
+    <Compile Include="Migrations\202005262259205_initial.Designer.cs">
+      <DependentUpon>202005262259205_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -101,8 +101,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202005261631306_recreateDatabase.resx">
-      <DependentUpon>202005261631306_recreateDatabase.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202005262259205_initial.resx">
+      <DependentUpon>202005262259205_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

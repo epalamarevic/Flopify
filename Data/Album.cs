@@ -20,7 +20,7 @@ namespace Data
             {
                 using (var ctx = new ApplicationDbContext())
                 {
-                    var playTimeList = ctx.Tracks.Where(e => e.AlbumId == AlbumId).Select(e => e.PlayTime).ToList();
+                    var playTimeList = ctx.Tracks.Where(e => e.AlbumId == AlbumId && e.IsActive == true).Select(e => e.PlayTime).ToList();
                     var sum = playTimeList.Sum();
 
                     return sum;
@@ -34,7 +34,7 @@ namespace Data
             {
                 using (var ctx = new ApplicationDbContext())
                 {
-                    var tracks = ctx.Tracks.Where(e => e.AlbumId == AlbumId).Count();
+                    var tracks = ctx.Tracks.Where(e => e.AlbumId == AlbumId && e.IsActive == true).Count();
                     return tracks;
                 }
             }
@@ -42,6 +42,7 @@ namespace Data
 
         public int Dislikes
         {
+
             get
             {
                 using (var ctx = new ApplicationDbContext())
