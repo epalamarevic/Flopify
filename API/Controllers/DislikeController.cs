@@ -18,7 +18,7 @@ namespace API.Controllers
         /// <summary>
         /// Create a Dislike for Track
         /// </summary>
-        /// <param name="dislike">Mandatory: Need BandID, AlbumID, TrackID</param>
+        /// <param name="dislike">Mandatory: BandID, AlbumID, TrackID</param>
         /// <returns></returns>
         [HttpPost]
         [Route("Track")]
@@ -38,7 +38,7 @@ namespace API.Controllers
         /// <summary>
         /// Create a Dislike for Album
         /// </summary>
-        /// <param name="dislike">Mandadtory: Need BandID and AlbumID</param>
+        /// <param name="dislike">Mandadtory: BandID, AlbumID</param>
         /// <returns></returns>
         [HttpPost]
         [Route("Album")]
@@ -57,7 +57,7 @@ namespace API.Controllers
         /// <summary>
         /// Create a Dislike for Band
         /// </summary>
-        /// <param name="dislike">Mandatory:Need BandID</param>
+        /// <param name="dislike">Mandatory: BandID</param>
         /// <returns></returns>
         [HttpPost]
         [Route("Band")]
@@ -91,7 +91,7 @@ namespace API.Controllers
         /// <summary>
         /// Delete a Dislike
         /// </summary>
-        /// <param name="dislike">Mandatory:Need DislikeID</param>
+        /// <param name="dislike">Mandatory: DislikeID</param>
         /// <returns></returns>
         [HttpDelete]
         [Route]
