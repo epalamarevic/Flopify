@@ -16,7 +16,7 @@ namespace API.Controllers
     {
         //Post api/band
         /// <summary>
-        /// Create a Band.
+        /// Create a Band
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
@@ -52,7 +52,7 @@ namespace API.Controllers
 
         //Get api/Band
         /// <summary>
-        /// Get Band by BandID.
+        /// Get Band by BandID
         /// </summary>
         /// <param name="id">Mandatory: Need BandId of the Band you wish to retreive.</param>
         /// <returns></returns>

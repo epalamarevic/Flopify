@@ -71,7 +71,7 @@ namespace Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.Bands.Single(e => e.BandId == band.BandId/* && e.UserId == _userId -Uncomment this to ensure that Bands are only able to be edited by the user that created them- */);
+                var entity = ctx.Bands.Single(e => e.BandId == band.BandId/* && e.UserId == _userId*/);
                 // Uncomment the portion above to ensure that Bands are only able to be edited by the user that created them
 
                 entity.Name = band.Name;

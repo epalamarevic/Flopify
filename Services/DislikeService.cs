@@ -104,11 +104,11 @@ namespace Services
         }
 
         // Method to Delete a Dislike
-        public void DeleteDislike(DeleteDislikeModel dislike)
+        public void DeleteDislike(int dislikeId)
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var itemToDelete = ctx.Dislikes.Single(e => e.DislikeId == dislike.DislikeId && e.UserId == _userId);
+                var itemToDelete = ctx.Dislikes.Single(e => e.DislikeId == dislikeId && e.UserId == _userId);
                 itemToDelete.IsActive = false;
                 ctx.SaveChanges();
             }

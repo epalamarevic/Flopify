@@ -16,7 +16,7 @@ namespace API.Controllers
     {
         //Post api/album
         /// <summary>
-        /// Create an Album for Band.
+        /// Create an Album for Band
         /// </summary>
         /// <param name="model">Mandatory: need to have "BandId"</param>
         /// <returns></returns>
