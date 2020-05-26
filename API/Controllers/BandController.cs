@@ -1,4 +1,5 @@
-﻿using Models.Band;
+﻿using Microsoft.AspNet.Identity;
+using Models.Band;
 using Services;
 using System;
 using System.Collections.Generic;
@@ -24,7 +25,7 @@ namespace API.Controllers
         [Route("Band")]
         public IHttpActionResult PostBand(BandCreateModel band)
         {
-            BandService bandService = new BandService();
+            BandService bandService = CreateBandService();
 
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -42,7 +43,7 @@ namespace API.Controllers
        [Route("Band")]
         public IHttpActionResult GetBands()
         {
-            BandService bandService = new BandService();
+            BandService bandService = CreateBandService();
 
             var tracks = bandService.GetAllBands();
 
@@ -59,7 +60,7 @@ namespace API.Controllers
         [Route("Band/{id}")]
         public IHttpActionResult GetBand(int id)
         {
-            BandService bandService = new BandService();
+            BandService bandService = CreateBandService();
 
             var track = bandService.GetBandById(id);
 
@@ -76,7 +77,7 @@ namespace API.Controllers
         [Route("Band")]
         public IHttpActionResult PutBand(BandEditModel band)
         {
-            BandService bandService = new BandService();
+            BandService bandService = CreateBandService();
 
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -95,11 +96,18 @@ namespace API.Controllers
         [Route("Band/{id}")]
         public IHttpActionResult DeleteBandById(int id)
         {
-            BandService bandService = new BandService();
+            BandService bandService = CreateBandService();
 
             bandService.DeleteBand(id);
 
             return Ok();
+        }
+
+        private BandService CreateBandService()
+        {
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var bandService = new BandService(userId);
+            return bandService;
         }
     }
 }
