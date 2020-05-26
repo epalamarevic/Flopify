@@ -21,7 +21,7 @@ namespace Data
             {
                 using (var ctx = new ApplicationDbContext())
                 {
-                    var query = ctx.Albums.Where(e => e.BandId == BandId).Count();
+                    var query = ctx.Albums.Where(e => e.BandId == BandId && e.IsActive == true).Count();
                     return query;
                 }
             }
