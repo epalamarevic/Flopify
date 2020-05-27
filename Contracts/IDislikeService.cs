@@ -13,6 +13,6 @@ namespace Contracts
         void CreateAlbumDislike(CreateAlbumDislikeModel dislike);
         void CreateBandDislike(CreateBandDislikeModel dislike);
         IEnumerable<ListDislikeModel> ListDislikes();
-        void DeleteDislike(DeleteDislikeModel dislike);
+        void DeleteDislike(int dislikeId);
     }
 }

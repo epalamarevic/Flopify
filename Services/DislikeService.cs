@@ -11,12 +11,14 @@ namespace Services
 {
     public class DislikeService : IDislikeService
     {
+        // Constructor to catch the User Id that is passed in through the Controller
         private readonly Guid _userId;
         public DislikeService(Guid userId)
         {
             _userId = userId;
         }
 
+        // Method to Create a Dislike for a Track
         public void CreateTrackDislike(CreateTrackDislikeModel dislike)
         {
             var entity = new Dislike()
@@ -29,11 +31,20 @@ namespace Services
 
             using (var ctx = new ApplicationDbContext())
             {
+                //var check = CheckForDuplicateDislike(entity);
+                //if (check == false)
+                //{
+                //    ctx.Dislikes.Add(entity);
+                //    ctx.SaveChanges();
+                //}
+                // -Uncomment this block and comment the block below to ensure only one dislike can be made per item per user
+
                 ctx.Dislikes.Add(entity);
                 ctx.SaveChanges();
             }
         }
 
+        // Method to Create a Dislike for an Album
         public void CreateAlbumDislike(CreateAlbumDislikeModel dislike)
         {
             var entity = new Dislike()
@@ -45,11 +56,20 @@ namespace Services
 
             using (var ctx = new ApplicationDbContext())
             {
+                //var check = CheckForDuplicateDislike(entity);
+                //if (check == false)
+                //{
+                //    ctx.Dislikes.Add(entity);
+                //    ctx.SaveChanges();
+                //}
+                // -Uncomment this block and comment the block below to ensure only one dislike can be made per item per user
+
                 ctx.Dislikes.Add(entity);
                 ctx.SaveChanges();
             }
         }
 
+        // Method to Create a Dislike for a Band
         public void CreateBandDislike(CreateBandDislikeModel dislike)
         {
             var entity = new Dislike()
@@ -60,11 +80,20 @@ namespace Services
 
             using (var ctx = new ApplicationDbContext())
             {
+                //var check = CheckForDuplicateDislike(entity);
+                //if (check == false)
+                //{
+                //    ctx.Dislikes.Add(entity);
+                //    ctx.SaveChanges();
+                //}
+                // -Uncomment this block and comment the block below to ensure only one dislike can be made per item per user
+
                 ctx.Dislikes.Add(entity);
                 ctx.SaveChanges();
             }
         }
-
+        
+        // Method to list all active Dislikes
         public IEnumerable<ListDislikeModel> ListDislikes()
         {
             using (var ctx = new ApplicationDbContext())
@@ -74,13 +103,27 @@ namespace Services
             }
         }
 
-        public void DeleteDislike(DeleteDislikeModel dislike)
+        // Method to Delete a Dislike
+        public void DeleteDislike(int dislikeId)
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var itemToDelete = ctx.Dislikes.Single(e => e.DislikeId == dislike.DislikeId && e.UserId == _userId);
+                var itemToDelete = ctx.Dislikes.Single(e => e.DislikeId == dislikeId && e.UserId == _userId);
                 itemToDelete.IsActive = false;
                 ctx.SaveChanges();
+            }
+        }
+
+        // Helper method that checks to make sure the user has not already liked a certain item
+        private bool CheckForDuplicateDislike(Dislike potentialNewDislike)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query = ctx.Dislikes.Where(e => e.UserId == _userId && e.TrackId == potentialNewDislike.TrackId && e.BandId == potentialNewDislike.BandId && e.AlbumId == potentialNewDislike.AlbumId && e.IsActive == true).ToList();
+                if (query.Count > 0)
+                    return true;
+                else
+                    return false;
             }
         }
     }
