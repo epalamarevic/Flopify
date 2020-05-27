@@ -24,7 +24,7 @@ Postman was also a contributor to the project. If you prefer the use of postman,
 
 # Credits
 Emina Palamarevic 
-Abrame Pithey
+Abram Pithey
 
 # License
 This project is in correspondence with MIT License.
