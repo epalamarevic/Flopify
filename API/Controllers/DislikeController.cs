@@ -94,12 +94,12 @@ namespace API.Controllers
         /// <param name="dislike">Mandatory: DislikeID</param>
         /// <returns></returns>
         [HttpDelete]
-        [Route]
-        public IHttpActionResult DeleteDislike(DeleteDislikeModel dislike)
+        [Route("{id}")]
+        public IHttpActionResult DeleteDislike(int id)
         {
             DislikeService dislikeService = CreateDislikeService();
 
-            dislikeService.DeleteDislike(dislike);
+            dislikeService.DeleteDislike(id);
 
             return Ok();
         }
