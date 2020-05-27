@@ -79,7 +79,7 @@ namespace Services
                 var entity =
                     ctx
                         .Albums
-                        .Single(e => e.AlbumId == model.AlbumId/* && e.UserId == _userId*/);
+                        .Single(e => e.AlbumId == model.AlbumId /*&& e.UserId == _userId*/);
                 // Uncomment the portion above to ensure that Albums are only able to be edited by the user that created them
 
                 entity.Title = model.Title;

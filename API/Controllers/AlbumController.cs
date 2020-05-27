@@ -18,7 +18,7 @@ namespace API.Controllers
         /// <summary>
         /// Create an Album for Band
         /// </summary>
-        /// <param name="model">Mandatory: need to have "BandId"</param>
+        /// <param name="model">Mandatory: BandID</param>
         /// <returns></returns>
         [HttpPost]
         [Route("Album")]
@@ -54,7 +54,7 @@ namespace API.Controllers
         /// <summary>
         /// Get Album by AlbumID
         /// </summary>
-        /// <param name="id">Mandatory: Need AlbumID of the Album </param>
+        /// <param name="id">Mandatory: AlbumID </param>
         /// <returns></returns>
        [HttpGet]
        [Route("Album/{id}")]
@@ -71,7 +71,7 @@ namespace API.Controllers
         /// <summary>
         /// Update a Album
         /// </summary>
-        /// <param name="model">Mandatory:Need AlbumId</param>
+        /// <param name="model">Mandatory: AlbumID</param>
         /// <returns></returns>
         [HttpPut]
         [Route("Album")]
@@ -91,7 +91,7 @@ namespace API.Controllers
         /// <summary>
         /// Delete a Album
         /// </summary>
-        /// <param name="id">Need the AlbumID of the Album you wish to delete </param>
+        /// <param name="id">Mandatory: AlbumID </param>
         /// <returns></returns>
        [HttpDelete]
        [Route("Album/{id}")]

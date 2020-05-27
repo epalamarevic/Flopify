@@ -54,7 +54,7 @@ namespace API.Controllers
         /// <summary>
         /// Get Band by BandID
         /// </summary>
-        /// <param name="id">Mandatory: Need BandId of the Band you wish to retreive.</param>
+        /// <param name="id">Mandatory: BandID</param>
         /// <returns></returns>
         [HttpGet]
         [Route("Band/{id}")]
@@ -71,7 +71,7 @@ namespace API.Controllers
         /// <summary>
         /// Update a Band
         /// </summary>
-        /// <param name="band">Need BandId to update band.</param>
+        /// <param name="band">Mandatory: BandID</param>
         /// <returns></returns>
         [HttpPut]
         [Route("Band")]
@@ -90,7 +90,7 @@ namespace API.Controllers
         /// <summary>
         /// Delete a Band
         /// </summary>
-        /// <param name="id">Need "BandId" of the Band you wish to remove.</param>
+        /// <param name="id">Mandatory: BandID</param>
         /// <returns></returns>
         [HttpDelete]
         [Route("Band/{id}")]

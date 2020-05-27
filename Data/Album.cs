@@ -42,6 +42,7 @@ namespace Data
 
         public int Dislikes
         {
+
             get
             {
                 using (var ctx = new ApplicationDbContext())

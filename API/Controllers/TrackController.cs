@@ -57,7 +57,7 @@ namespace API.Controllers
         /// <summary>
         /// Get a Track by TrackID
         /// </summary>
-        /// <param name="id">Need "trackID" of the Track you wish to retreive </param>
+        /// <param name="id">Mandatory: TrackID </param>
         /// <returns></returns>
        [HttpGet]
        [Route("Track/{id}")]
@@ -74,7 +74,7 @@ namespace API.Controllers
         /// <summary>
         /// Update a Track
         /// </summary>
-        /// <param name="model">Need trackId to update a track</param>
+        /// <param name="model">Mandatory: TrackID</param>
         /// <returns></returns>
        [HttpPut]
        [Route("Track")]
@@ -94,7 +94,7 @@ namespace API.Controllers
         /// <summary>
         /// Delete a Track
         /// </summary>
-        /// <param name="id">Need "trackId" of the Track you wish to remove</param>
+        /// <param name="id">Mandatory: TrackID</param>
         /// <returns></returns>
         [HttpDelete]
         [Route("Track/{id}")]
