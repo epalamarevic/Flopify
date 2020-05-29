@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Models.Dislike
+namespace Models.Track
 {
-    public class CreateAlbumDislikeModel
+    public class TrackCreateModel
     {
-        public int BandId { get; set; }
+        public string Title { get; set; }
         public int AlbumId { get; set; }
+        public int PlayTime { get; set; }
     }
 }

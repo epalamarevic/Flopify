@@ -12,7 +12,7 @@ namespace Contracts
         void CreateBand(BandCreateModel band);
         IEnumerable<BandListModel> GetAllBands();
         BandDetailModel GetBandById(int bandId);
-        void UpdateBand(BandEditModel band);
+        void UpdateBand(BandUpdateModel band);
         void DeleteBand(int bandId);
     }
 }

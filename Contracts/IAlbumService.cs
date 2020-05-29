@@ -9,10 +9,10 @@ namespace Contracts
 {
     public interface IAlbumService
     {
-        void CreateAlbum(AlbumCreate model);
-        IEnumerable<AlbumList> GetAllAlbums();
-        AlbumDetail GetAlbumById(int albumId);
-        void UpdateAlbum(AlbumUpdate model);
+        void CreateAlbum(AlbumCreateModel model);
+        IEnumerable<AlbumListModel> GetAllAlbums();
+        AlbumDetailModel GetAlbumById(int albumId);
+        void UpdateAlbum(AlbumUpdateModel model);
         void DeleteAlbum(int albumId);
     }
 }
