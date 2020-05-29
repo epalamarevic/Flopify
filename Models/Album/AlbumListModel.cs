@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Models.Track
+namespace Models.Album
 {
-    public class TrackList
+    public class AlbumListModel
     {
-        public int TrackId { get; set; }
+        public int AlbumId { get; set; }
         public string Title { get; set; }
-        public int PlayTime { get; set; }
+        public int BandId { get; set; }
     }
 }
