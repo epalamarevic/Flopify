@@ -11,6 +11,7 @@ namespace Contracts
     {
         void CreateAlbum(AlbumCreateModel model);
         IEnumerable<AlbumListModel> GetAllAlbums();
+        IEnumerable<AlbumListByDislikesModel> GetAllAlbumsByDislikes();
         AlbumDetailModel GetAlbumById(int albumId);
         void UpdateAlbum(AlbumUpdateModel model);
         void DeleteAlbum(int albumId);
