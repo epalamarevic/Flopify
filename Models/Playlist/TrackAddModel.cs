@@ -4,18 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Models
+namespace Models.Playlist
 {
-    public class ListPlaylistModel
+    public class TrackAddModel
     {
         public int PlaylistId { get; set; }
-       
-        public string Title { get; set; }
-        public int NumberOfPlaylistTracks { get; set; }
-
         public int TrackId { get; set; }
-
-
-
     }
 }

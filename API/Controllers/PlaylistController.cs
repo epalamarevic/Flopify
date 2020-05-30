@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using Contracts;
+using Microsoft.AspNet.Identity;
 using Models;
+using Models.Playlist;
 using Services;
 using System;
 using System.Collections.Generic;
@@ -29,7 +31,19 @@ namespace API.Controllers
             return Ok();
         }
 
-        
+        [HttpPost]
+        [Route("Playlist/PostTrackToPlaylist")]
+        public IHttpActionResult PostTrackToPlaylist(TrackAddModel trackAdd)
+        {
+            PlaylistService playlistService = CreatePlaylistService();
+
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            playlistService.AddTrackToPlaylist(trackAdd);
+
+            return Ok();
+        }
 
         [HttpGet]
         [Route("Playlist")]
@@ -42,27 +56,27 @@ namespace API.Controllers
             return Ok(playlists);
         }
 
-        //[HttpGet]
-        //[Route("Playlist/{id}")]
-        //public IHttpActionResult GetPlaylistbyID(int id)
-        //{
-        //    PlaylistService playlistService = CreatePlaylistService();
+        [HttpGet]
+        [Route("Playlist/{id}")]
+        public IHttpActionResult GetPlaylistbyID(int id)
+        {
+            PlaylistService playlistService = CreatePlaylistService();
 
-        //    var playlist = playlistService.GetPlaylistById(id);
+            var playlist = playlistService.GetPlaylistById(id);
 
-        //    return Ok(playlist);
-        //}
+            return Ok(playlist);
+        }
 
-        //[HttpDelete]
-        //[Route("Playlist/{id}")]
-        //public IHttpActionResult DeletePlaylistById(int id)
-        //{
-        //    PlaylistService playlistService = CreatePlaylistService();
+        [HttpDelete]
+        [Route("Playlist/{id}")]
+        public IHttpActionResult DeletePlaylistById(int id)
+        {
+            PlaylistService playlistService = CreatePlaylistService();
 
-        //    playlistService.DeletePlaylist(id);
+            playlistService.DeletePlaylist(id);
 
-        //    return Ok();
-        //}
+            return Ok();
+        }
 
 
         private PlaylistService CreatePlaylistService()

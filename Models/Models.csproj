@@ -70,6 +70,7 @@
     <Compile Include="Dislike\DislikeCreateBandModel.cs" />
     <Compile Include="Dislike\DislikeCreateTrackModel.cs" />
     <Compile Include="Dislike\DislikeListModel.cs" />
+    <Compile Include="Playlist\TrackAddModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Track\TrackCreateModel.cs" />
     <Compile Include="Track\TrackDetailModel.cs" />
