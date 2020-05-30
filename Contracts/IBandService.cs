@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Contracts
 {
-    public interface IBandServices
+    public interface IBandService
     {
         void CreateBand(BandCreateModel band);
         IEnumerable<BandListModel> GetAllBands();

@@ -21,16 +21,16 @@ namespace API.Controllers
         /// <param name="dislike">Mandatory: BandID, AlbumID, TrackID</param>
         /// <returns></returns>
         [HttpPost]
-        [Route("Track")]
+        [Route("Track/{id}")]
         
-        public IHttpActionResult PostTrackDislike(DislikeCreateTrackModel dislike)
+        public IHttpActionResult PostTrackDislike(int id)
         {
             DislikeService dislikeService = CreateDislikeService();
 
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            dislikeService.CreateTrackDislike(dislike);
+            dislikeService.CreateTrackDislike(id);
 
             return Ok();
         }
@@ -41,15 +41,15 @@ namespace API.Controllers
         /// <param name="dislike">Mandadtory: BandID, AlbumID</param>
         /// <returns></returns>
         [HttpPost]
-        [Route("Album")]
-        public IHttpActionResult PostAlbumDislike(DislikeCreateAlbumModel dislike)
+        [Route("Album/{id}")]
+        public IHttpActionResult PostAlbumDislike(int id)
         {
             DislikeService dislikeService = CreateDislikeService();
 
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            dislikeService.CreateAlbumDislike(dislike);
+            dislikeService.CreateAlbumDislike(id);
 
             return Ok();
         }
@@ -60,15 +60,15 @@ namespace API.Controllers
         /// <param name="dislike">Mandatory: BandID</param>
         /// <returns></returns>
         [HttpPost]
-        [Route("Band")]
-        public IHttpActionResult PostBandDislike(DislikeCreateBandModel dislike)
+        [Route("Band/{id}")]
+        public IHttpActionResult PostBandDislike(int id)
         {
             DislikeService dislikeService = CreateDislikeService();
 
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            dislikeService.CreateBandDislike(dislike);
+            dislikeService.CreateBandDislike(id);
 
             return Ok();
         }

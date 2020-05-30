@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Services
 {
-    public class BandService : IBandServices
+    public class BandService : IBandService
     {
         // Constructor to catch the User Id that is passed in through the Controller
         private readonly Guid _userId;

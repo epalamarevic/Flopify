@@ -5,6 +5,7 @@ using Models.Playlist;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -18,8 +19,6 @@ namespace Services
             _userId = userId;
         }
 
-
-
         //Create a Playlist
         public void CreatePlaylist(CreatePlaylist model)
         {
@@ -27,7 +26,7 @@ namespace Services
                 new Playlist()
                 {
                     Title = model.Title,
-                    tracks = new List<Track>()
+                    Tracks = new List<Track>()
                 };
 
             using (var ctx = new ApplicationDbContext())
@@ -45,12 +44,10 @@ namespace Services
             {
                 var track = ctx.Tracks.Single(e => e.TrackId == ids.TrackId && e.IsActive == true);
                 var playlist = ctx.Playlists.Single(e => e.PlaylistId == ids.PlaylistId && e.IsActive == true);
-                playlist.tracks.Add(track);
-               
+                playlist.Tracks.Add(track);
                 ctx.SaveChanges();
             }
         }
-
 
         ////Get list of Playlist
         public IEnumerable<ListPlaylistModel> GetAllPlaylists()

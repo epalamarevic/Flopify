@@ -49,16 +49,16 @@
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IAlbumService.cs" />
-    <Compile Include="IBandServices.cs" />
+    <Compile Include="IBandService.cs" />
     <Compile Include="IDislikeService.cs" />
     <Compile Include="IPlaylistService.cs" />
-    <Compile Include="ITrackServices.cs" />
+    <Compile Include="IQueueService.cs" />
+    <Compile Include="ITrackService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -66,6 +66,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Data\Data.csproj">
+      <Project>{5F070846-B789-4742-B0AE-1370954E25FA}</Project>
+      <Name>Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Models\Models.csproj">
       <Project>{34666F9A-5093-4305-B2E7-075C43CA9957}</Project>
       <Name>Models</Name>

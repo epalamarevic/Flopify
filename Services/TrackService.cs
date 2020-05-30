@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Services
 {
-    public class TrackService : ITrackServices
+    public class TrackService : ITrackService
     {
         // Constructor to catch the User Id that is passed in through the Controller
         private readonly Guid _userId;
@@ -21,17 +21,20 @@ namespace Services
         // Method to Create a Track
         public void CreateTrack(TrackCreateModel model)
         {
-            var entity =
-                new Track()
-                {
-                    Title = model.Title,
-                    AlbumId = model.AlbumId,
-                    PlayTime = model.PlayTime,
-                    UserId = _userId
-                };
-
             using (var ctx = new ApplicationDbContext())
             {
+                var bandId = ctx.Albums.Single(e => e.AlbumId == model.AlbumId).BandId;
+
+                var entity =
+                    new Track()
+                    {
+                        Title = model.Title,
+                        AlbumId = model.AlbumId,
+                        BandId = bandId,
+                        PlayTime = model.PlayTime,
+                        UserId = _userId
+                    };
+
                 ctx.Tracks.Add(entity);
                 ctx.SaveChanges();
             }
@@ -140,5 +143,4 @@ namespace Services
             }
         }
     }
-        
 }
