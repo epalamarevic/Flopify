@@ -19,7 +19,7 @@ namespace Services
         }
 
         // Method to Create a Dislike for a Track
-        public void CreateTrackDislike(CreateTrackDislikeModel dislike)
+        public void CreateTrackDislike(DislikeCreateTrackModel dislike)
         {
             var entity = new Dislike()
             {
@@ -45,7 +45,7 @@ namespace Services
         }
 
         // Method to Create a Dislike for an Album
-        public void CreateAlbumDislike(CreateAlbumDislikeModel dislike)
+        public void CreateAlbumDislike(DislikeCreateAlbumModel dislike)
         {
             var entity = new Dislike()
             {
@@ -70,7 +70,7 @@ namespace Services
         }
 
         // Method to Create a Dislike for a Band
-        public void CreateBandDislike(CreateBandDislikeModel dislike)
+        public void CreateBandDislike(DislikeCreateBandModel dislike)
         {
             var entity = new Dislike()
             {
@@ -94,11 +94,11 @@ namespace Services
         }
         
         // Method to list all active Dislikes
-        public IEnumerable<ListDislikeModel> ListDislikes()
+        public IEnumerable<DislikeListModel> ListDislikes()
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var query = ctx.Dislikes.Where(e => e.IsActive == true).Select(e => new ListDislikeModel { DislikeId = e.DislikeId, BandId = e.BandId, AlbumId = e.AlbumId, TrackId = e.TrackId });
+                var query = ctx.Dislikes.Where(e => e.IsActive == true).Select(e => new DislikeListModel { DislikeId = e.DislikeId, BandId = e.BandId, AlbumId = e.AlbumId, TrackId = e.TrackId });
                 return query.ToArray();
             }
         }

@@ -23,7 +23,7 @@ namespace API.Controllers
         [HttpPost]
         [Route("Track")]
         
-        public IHttpActionResult PostTrackDislike(CreateTrackDislikeModel dislike)
+        public IHttpActionResult PostTrackDislike(DislikeCreateTrackModel dislike)
         {
             DislikeService dislikeService = CreateDislikeService();
 
@@ -42,7 +42,7 @@ namespace API.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("Album")]
-        public IHttpActionResult PostAlbumDislike(CreateAlbumDislikeModel dislike)
+        public IHttpActionResult PostAlbumDislike(DislikeCreateAlbumModel dislike)
         {
             DislikeService dislikeService = CreateDislikeService();
 
@@ -61,7 +61,7 @@ namespace API.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("Band")]
-        public IHttpActionResult PostBandDislike(CreateBandDislikeModel dislike)
+        public IHttpActionResult PostBandDislike(DislikeCreateBandModel dislike)
         {
             DislikeService dislikeService = CreateDislikeService();
 

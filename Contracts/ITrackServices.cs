@@ -9,10 +9,11 @@ namespace Contracts
 {
     public interface ITrackServices
     {
-        void CreateTrack(CreateTrack model);
-        IEnumerable<TrackList> GetAllTracks();
-        TrackDetail GetTrackById(int trackId);
-        void UpdateTrack(UpdateTrack model);
+        void CreateTrack(TrackCreateModel model);
+        IEnumerable<TrackListModel> GetAllTracks();
+        IEnumerable<TrackListByDislikesModel> GetAllTracksByDislikes();
+        TrackDetailModel GetTrackById(int trackId);
+        void UpdateTrack(TrackUpdateModel model);
         void DeleteTrack(int trackId);
     }
 }

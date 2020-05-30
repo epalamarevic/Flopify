@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace Models.Dislike
 {
-    public class CreateTrackDislikeModel
+    public class DislikeCreateBandModel
     {
         public int BandId { get; set; }
-        public int AlbumId { get; set; }
-        public int TrackId { get; set; }
     }
 }

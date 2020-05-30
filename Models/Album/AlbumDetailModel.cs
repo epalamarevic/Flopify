@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Models.Album
 {
-   public class AlbumDetail
+   public class AlbumDetailModel
     {
         public int AlbumId { get; set; }
         public string Title { get; set; }

@@ -47,6 +47,27 @@ namespace Services
             }
         }
 
+        // Method to List all Bands, ordered by most Disliked
+        public IEnumerable<BandListByDislikesModel> GetAllBandsByDislikes()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var request =
+                    ctx
+                        .Bands
+                        .Where(e => e.IsActive == true)
+                        .Select(e => new BandListByDislikesModel
+                        {
+                            BandId = e.BandId,
+                            Name = e.Name,
+                            Genre = e.Genre,
+                            Dislikes = ctx.Dislikes.Where(x => x.IsActive == true && x.BandId == e.BandId).Count()
+                        }).OrderByDescending(d => d.Dislikes);
+
+                return request.ToArray();
+            }
+        }
+
         // Method to Get a specific Band by the Band Id
         public BandDetailModel GetBandById(int bandId)
         {
@@ -67,7 +88,7 @@ namespace Services
         }
 
         // Method to Update a Band by the Band Id
-        public void UpdateBand(BandEditModel band)
+        public void UpdateBand(BandUpdateModel band)
         {
             using (var ctx = new ApplicationDbContext())
             {

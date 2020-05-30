@@ -25,7 +25,7 @@ namespace API.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("Track")]
-        public IHttpActionResult PostTrack(CreateTrack model)
+        public IHttpActionResult PostTrack(TrackCreateModel model)
         {
             TrackService trackService = CreateTrackService();
 
@@ -53,6 +53,21 @@ namespace API.Controllers
             return Ok(tracks);
         }
 
+        //Get api/track
+        /// <summary>
+        /// Get all Tracks in order of Dislikes
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("TrackByDislikes")]
+        public IHttpActionResult GetTracksByDislikes()
+        {
+            TrackService trackService = CreateTrackService();
+
+            var tracks = trackService.GetAllTracksByDislikes();
+
+            return Ok(tracks);
+        }
 
         //Get api/track{id}
         /// <summary>
@@ -60,7 +75,7 @@ namespace API.Controllers
         /// </summary>
         /// <param name="id">Mandatory: TrackID </param>
         /// <returns></returns>
-       [HttpGet]
+        [HttpGet]
        [Route("Track/{id}")]
         public IHttpActionResult GetTrack(int id)
         {
@@ -79,7 +94,7 @@ namespace API.Controllers
         /// <returns></returns>
        [HttpPut]
        [Route("Track")]
-        public IHttpActionResult PutTrack(UpdateTrack model)
+        public IHttpActionResult PutTrack(TrackUpdateModel model)
         {
             TrackService trackService = CreateTrackService();
 

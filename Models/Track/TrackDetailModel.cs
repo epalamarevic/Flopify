@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Models.Track
 {
-    public class TrackDetail
+    public class TrackDetailModel
     {
         public int TrackId { get; set; }
         public string Title { get; set; }

@@ -19,7 +19,7 @@ namespace Services
         }
 
         // Method to Create an Album
-        public void CreateAlbum(AlbumCreate model)
+        public void CreateAlbum(AlbumCreateModel model)
         {
             var entity =
                 new Album()
@@ -38,17 +38,38 @@ namespace Services
         }
 
         // Method to List all Albums
-        public IEnumerable<AlbumList> GetAllAlbums()
+        public IEnumerable<AlbumListModel> GetAllAlbums()
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var request = ctx.Albums.Where(e => e.IsActive == true).Select(e => new AlbumList { AlbumId = e.AlbumId, Title = e.Title, BandId = e.BandId });
+                var request = ctx.Albums.Where(e => e.IsActive == true).Select(e => new AlbumListModel { AlbumId = e.AlbumId, Title = e.Title, BandId = e.BandId });
+                return request.ToArray();
+            }
+        }
+
+        // Method to List all Albums, ordered by most Disliked
+        public IEnumerable<AlbumListByDislikesModel> GetAllAlbumsByDislikes()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var request =
+                    ctx
+                        .Albums
+                        .Where(e => e.IsActive == true)
+                        .Select(e => new AlbumListByDislikesModel
+                        {
+                            AlbumId = e.AlbumId,
+                            Title = e.Title,
+                            BandId = e.BandId,
+                            Dislikes = ctx.Dislikes.Where(x => x.IsActive == true && x.AlbumId == e.AlbumId).Count()
+                        }).OrderByDescending(d => d.Dislikes);
+
                 return request.ToArray();
             }
         }
 
         // Method to Get a specific Album by the Album Id
-        public AlbumDetail GetAlbumById(int albumId)
+        public AlbumDetailModel GetAlbumById(int albumId)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -58,7 +79,7 @@ namespace Services
                         .Albums
                         .Single(e => e.AlbumId == albumId);
                 return
-                    new AlbumDetail
+                    new AlbumDetailModel
                     {
                         AlbumId = entity.AlbumId,
                         Title = entity.Title,
@@ -72,7 +93,7 @@ namespace Services
         }
 
         // Method to Update an Album by the Album Id
-        public void UpdateAlbum(AlbumUpdate model)
+        public void UpdateAlbum(AlbumUpdateModel model)
         {
             using (var ctx = new ApplicationDbContext())
             {
