@@ -37,6 +37,7 @@ namespace Data
         public DbSet<Album> Albums { get; set; }
         public DbSet<Band> Bands { get; set; }
         public DbSet<Dislike> Dislikes { get; set; }
+        public DbSet<Playlist> Playlists { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
