@@ -50,7 +50,7 @@ namespace Services
                             e =>
                                 new TrackListModel
                                 {
-                                    TrackId= e.TrackId,
+                                    TrackId = e.TrackId,
                                     Title = e.Title,
                                     PlayTime = e.PlayTime
                                 }
@@ -140,4 +140,5 @@ namespace Services
             }
         }
     }
+        
 }

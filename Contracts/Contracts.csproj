@@ -57,6 +57,7 @@
     <Compile Include="IAlbumService.cs" />
     <Compile Include="IBandServices.cs" />
     <Compile Include="IDislikeService.cs" />
+    <Compile Include="IPlaylistService.cs" />
     <Compile Include="ITrackServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
