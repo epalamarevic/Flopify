@@ -1,4 +1,5 @@
 ﻿using Models;
+using Models.Playlist;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,8 +10,9 @@ namespace Contracts
 {
    public interface IPlaylistService
     {
-        void CreatePlaylist(CreatePlaylist playlist);
-        //IEnumerable<ListPlaylistModel> GetAllPlaylists();
-        //void DeletePlaylist(int playlistId);
+        void CreatePlaylist(CreatePlaylist model);
+        void AddTrackToPlaylist(TrackAddModel ids);
+        IEnumerable<ListPlaylistModel> GetAllPlaylists();
+        void DeletePlaylist(int playlistId);
     }
 }
