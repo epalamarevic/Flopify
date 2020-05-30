@@ -14,7 +14,7 @@ namespace Data
         public int PlaylistId { get; set; }
         public string Title {get; set;}
 
-        public virtual ICollection<Track> tracks { get; set; }
+        public virtual ICollection<Track> Tracks { get; set; }
 
         public int TrackId { get; set; }
         public virtual Track Track { get; set; }
