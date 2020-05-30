@@ -13,17 +13,10 @@ namespace Data
         [Key]
         public int PlaylistId { get; set; }
         public string Title {get; set;}
-
-
-
-
-
+        public string Description { get; set; }
+        public DateTime DateCreated { get; set; }
+        public virtual ICollection<Track> Tracks { get; set; }
         public bool IsActive { get; set; } = true;
-
-
-       
-        
-        
     }
 
 }

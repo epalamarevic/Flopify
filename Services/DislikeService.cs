@@ -19,18 +19,20 @@ namespace Services
         }
 
         // Method to Create a Dislike for a Track
-        public void CreateTrackDislike(DislikeCreateTrackModel dislike)
+        public void CreateTrackDislike(int trackId)
         {
-            var entity = new Dislike()
-            {
-                UserId = _userId,
-                BandId = dislike.BandId,
-                AlbumId = dislike.AlbumId,
-                TrackId = dislike.TrackId
-            };
-
             using (var ctx = new ApplicationDbContext())
             {
+                var track = ctx.Tracks.Single(e => e.TrackId == trackId && e.IsActive == true);
+
+                var entity = new Dislike()
+                {
+                    UserId = _userId,
+                    BandId = track.BandId,
+                    AlbumId = track.AlbumId,
+                    TrackId = track.TrackId
+                };
+
                 //var check = CheckForDuplicateDislike(entity);
                 //if (check == false)
                 //{
@@ -45,17 +47,19 @@ namespace Services
         }
 
         // Method to Create a Dislike for an Album
-        public void CreateAlbumDislike(DislikeCreateAlbumModel dislike)
+        public void CreateAlbumDislike(int albumId)
         {
-            var entity = new Dislike()
-            {
-                UserId = _userId,
-                BandId = dislike.BandId,
-                AlbumId = dislike.AlbumId
-            };
-
             using (var ctx = new ApplicationDbContext())
             {
+                var album = ctx.Albums.Single(e => e.AlbumId == albumId && e.IsActive == true);
+
+                var entity = new Dislike()
+                {
+                    UserId = _userId,
+                    BandId = album.BandId,
+                    AlbumId = album.AlbumId
+                };
+
                 //var check = CheckForDuplicateDislike(entity);
                 //if (check == false)
                 //{
@@ -70,16 +74,18 @@ namespace Services
         }
 
         // Method to Create a Dislike for a Band
-        public void CreateBandDislike(DislikeCreateBandModel dislike)
+        public void CreateBandDislike(int bandId)
         {
-            var entity = new Dislike()
-            {
-                UserId = _userId,
-                BandId = dislike.BandId
-            };
-
             using (var ctx = new ApplicationDbContext())
             {
+                var band = ctx.Bands.Single(e => e.BandId == bandId && e.IsActive == true);
+
+                var entity = new Dislike()
+                {
+                    UserId = _userId,
+                    BandId = band.BandId
+                };
+
                 //var check = CheckForDuplicateDislike(entity);
                 //if (check == false)
                 //{
@@ -92,7 +98,7 @@ namespace Services
                 ctx.SaveChanges();
             }
         }
-        
+
         // Method to list all active Dislikes
         public IEnumerable<DislikeListModel> ListDislikes()
         {

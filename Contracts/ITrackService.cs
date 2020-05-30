@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Contracts
 {
-    public interface ITrackServices
+    public interface ITrackService
     {
         void CreateTrack(TrackCreateModel model);
         IEnumerable<TrackListModel> GetAllTracks();

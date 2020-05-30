@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Models.Dislike
+namespace Models.Queue
 {
-    public class DislikeCreateAlbumModel
+    public class QueueUpdateAddAlbumModel
     {
-        public int BandId { get; set; }
         public int AlbumId { get; set; }
+        public bool ReplaceAll { get; set; }
+        public bool PlayNext { get; set; }
     }
 }
