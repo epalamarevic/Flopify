@@ -38,4 +38,6 @@ namespace Data
         public bool IsActive { get; set; } = true;
         public virtual ICollection<Playlist> Playlists { get; set; }
     }
+
 }
+

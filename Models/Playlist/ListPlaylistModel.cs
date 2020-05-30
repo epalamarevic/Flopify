@@ -9,8 +9,11 @@ namespace Models
     public class ListPlaylistModel
     {
         public int PlaylistId { get; set; }
-
+       
         public string Title { get; set; }
+        public int NumberOfPlaylistTracks { get; set; }
+
+        public int TrackId { get; set; }
 
 
 

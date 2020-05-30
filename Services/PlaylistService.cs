@@ -31,11 +31,13 @@ namespace Services
 
             using (var ctx = new ApplicationDbContext())
             {
+
                 ctx.Playlists.Add(entity);
                 ctx.SaveChanges();
             }
         }
 
+        //ADD TRACKS TO PLAYLIST
         public void AddTrackToPlaylist(TrackAddModel ids)
         {
             using (var ctx = new ApplicationDbContext())
@@ -52,41 +54,46 @@ namespace Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var request = ctx.Playlists.Where(e => e.IsActive == true).Select(e => new ListPlaylistModel { Title = e.Title, PlaylistId = e.PlaylistId, });
+                var request = ctx.Playlists.Where(e => e.IsActive == true).Select(e => new ListPlaylistModel { Title = e.Title, PlaylistId = e.PlaylistId, TrackId = e.TrackId, NumberOfPlaylistTracks = e.NumberOfPlaylistTracks});
 
                 return request.ToArray();
             }
         }
-
+        
 
         //// Get Playlist by ID
-        //public ListPlaylistModel GetPlaylistById(int playlistId)
-        //{
-        //    using (var ctx = new ApplicationDbContext())
-        //    {
-        //        var entity = ctx.Playlists.Single(e => e.PlaylistId == playlistId);
+        public ListPlaylistModel GetPlaylistById(int playlistId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx.Playlists.Single(e => e.PlaylistId == playlistId);
 
-        //        return new ListPlaylistModel
-        //        {
-                    
-        //            Title = entity.Title,
-                    
-        //        };
-        //    }
-        //}
+                return new ListPlaylistModel
+                {
 
+                    Title = entity.Title,
+                    PlaylistId = entity.PlaylistId,
+                    TrackId =entity.TrackId,
+                    NumberOfPlaylistTracks = entity.NumberOfPlaylistTracks
 
-        ////Delete a Playlist
-        //public void DeletePlaylist(int playlistId)
-        //{
-        //    using (var ctx = new ApplicationDbContext())
-        //    {
-        //        var entity = ctx.Playlists.Single(e => e.PlaylistId == playlistId);
-                
-        //        entity.IsActive = false;
+                };
 
-        //        ctx.SaveChanges();
-        //    }
-        //}
+            }
+        }
+        public void DeletePlaylist(int playlistId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Playlists
+                        .Single(e => e.PlaylistId == playlistId/* && e.UserId == _userId*/);
+                // Uncomment the portion above to ensure that Playlists are only able to be deleted by the user that created them
+
+                entity.IsActive = false;
+
+                ctx.SaveChanges();
+            }
+        }
     }
 }
