@@ -88,9 +88,13 @@
     <Compile Include="Band.cs" />
     <Compile Include="Dislike.cs" />
     <Compile Include="IdentityModels.cs" />
-    <Compile Include="Migrations\202005301617052_addedAlbumIdToTrack.cs" />
-    <Compile Include="Migrations\202005301617052_addedAlbumIdToTrack.Designer.cs">
-      <DependentUpon>202005301617052_addedAlbumIdToTrack.cs</DependentUpon>
+    <Compile Include="Migrations\202006012319057_one.cs" />
+    <Compile Include="Migrations\202006012319057_one.Designer.cs">
+      <DependentUpon>202006012319057_one.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006012327549_hon.cs" />
+    <Compile Include="Migrations\202006012327549_hon.Designer.cs">
+      <DependentUpon>202006012327549_hon.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Playlist.cs" />
@@ -103,8 +107,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202005301617052_addedAlbumIdToTrack.resx">
-      <DependentUpon>202005301617052_addedAlbumIdToTrack.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202006012319057_one.resx">
+      <DependentUpon>202006012319057_one.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006012327549_hon.resx">
+      <DependentUpon>202006012327549_hon.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
