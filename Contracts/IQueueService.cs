@@ -1,4 +1,5 @@
-﻿using Models.Queue;
+﻿using Models;
+using Models.Queue;
 using Models.Track;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,7 @@ namespace Contracts
         void AddAlbumToQueue(QueueUpdateAddAlbumModel model);
         void AddBandToQueue(QueueUpdateAddBandModel model);
         IEnumerable<TrackListModel> GetAllFromQueue();
-        void CreatePlaylistFromQueue();
+        void CreatePlaylistFromQueue(CreatePlaylist model);
         void AddToPlayListFromQueue(int playlistId);
         void ClearQueue();
     }

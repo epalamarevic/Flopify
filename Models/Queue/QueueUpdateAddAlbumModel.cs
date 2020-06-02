@@ -9,7 +9,6 @@ namespace Models.Queue
     public class QueueUpdateAddAlbumModel
     {
         public int AlbumId { get; set; }
-        public bool ReplaceAll { get; set; }
         public bool PlayNext { get; set; }
     }
 }

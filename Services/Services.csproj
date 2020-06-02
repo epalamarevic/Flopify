@@ -59,6 +59,7 @@
     <Compile Include="DislikeService.cs" />
     <Compile Include="PlaylistService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueueService.cs" />
     <Compile Include="TrackService.cs" />
   </ItemGroup>
   <ItemGroup>

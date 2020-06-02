@@ -9,7 +9,6 @@ namespace Models.Queue
     public class QueueUpdateAddBandModel
     {
         public int BandId { get; set; }
-        public bool ReplaceAll { get; set; }
         public bool PlayNext { get; set; }
     }
 }
