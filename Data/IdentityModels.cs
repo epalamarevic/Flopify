@@ -49,6 +49,13 @@ namespace Data
                 .Configurations
                 .Add(new IdentityUserLoginConfiguration())
                 .Add(new IdentityUserRoleConfiguration());
+
+
+            modelBuilder.Entity<Playlist>()
+                .HasMany(p => p.Tracks)
+                .WithMany(t =>t.Playlists);
+
+
         }
     }
 

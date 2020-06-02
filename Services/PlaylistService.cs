@@ -54,9 +54,17 @@ namespace Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var request = ctx.Playlists.Where(e => e.IsActive == true).Select(e => new ListPlaylistModel { Title = e.Title, PlaylistId = e.PlaylistId, TrackId = e.TrackId, NumberOfPlaylistTracks = e.NumberOfPlaylistTracks});
+                var query = ctx.Playlists
+                    .Where(e => e.IsActive == true)
+                    .Select(
+                        e => new ListPlaylistModel
+                    {       
+                            Title = e.Title, 
+                            PlaylistId = e.PlaylistId, 
+                            Tracks =e.Tracks,
+                        });
 
-                return request.ToArray();
+                return query.ToArray();
             }
         }
         
@@ -73,8 +81,8 @@ namespace Services
 
                     Title = entity.Title,
                     PlaylistId = entity.PlaylistId,
-                    TrackId =entity.TrackId,
-                    NumberOfPlaylistTracks = entity.NumberOfPlaylistTracks
+                    Tracks= entity.Tracks,
+                    NumberOfTracks = entity.NumberOfTracks
 
                 };
 
