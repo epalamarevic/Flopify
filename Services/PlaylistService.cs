@@ -61,7 +61,7 @@ namespace Services
                     {       
                             Title = e.Title, 
                             PlaylistId = e.PlaylistId, 
-                            Tracks =e.Tracks,
+                            //Tracks = e.Tracks,
                         });
 
                 return query.ToArray();
@@ -81,7 +81,7 @@ namespace Services
 
                     Title = entity.Title,
                     PlaylistId = entity.PlaylistId,
-                    Tracks= entity.Tracks,
+                    // Tracks = entity.Tracks,
                     NumberOfTracks = entity.NumberOfTracks
 
                 };

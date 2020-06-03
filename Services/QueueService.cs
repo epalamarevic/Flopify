@@ -6,6 +6,7 @@ using Models.Track;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -29,8 +30,12 @@ namespace Services
 
             using (var ctx = new ApplicationDbContext())
             {
-                ctx.Queues.Add(entity);
-                ctx.SaveChanges();
+                var check = ctx.Queues.Where(e => e.UserId == _userId).ToList();
+                if (check.Count() == 0)
+                {
+                    ctx.Queues.Add(entity);
+                    ctx.SaveChanges();
+                }
             }
         }
 
