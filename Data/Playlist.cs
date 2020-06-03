@@ -13,11 +13,10 @@ namespace Data
         [Key]
         public int PlaylistId { get; set; }
         public string Title {get; set;}
+        public Guid UserId { get; set; }
 
-        
         public virtual ICollection<Track> Tracks { get; set; }
         
-
         public bool IsActive { get; set; } = true;
 
         public int NumberOfTracks
@@ -26,8 +25,8 @@ namespace Data
             {
                 using (var ctx = new ApplicationDbContext())
                 {
-                    var Tracks = ctx.Tracks.Where(e => e.TrackId == PlaylistId && e.IsActive == true).Count();
-                    return Tracks;
+                    var Track= ctx.Playlists.Where(e => e.Tracks == Tracks && e.IsActive == true).Count();
+                    return Track;
                 }
             }
         }

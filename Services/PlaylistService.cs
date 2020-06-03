@@ -2,6 +2,7 @@
 using Data;
 using Models;
 using Models.Playlist;
+using Models.Track;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -58,36 +59,32 @@ namespace Services
                     .Where(e => e.IsActive == true)
                     .Select(
                         e => new ListPlaylistModel
-                    {       
-                            Title = e.Title, 
-                            PlaylistId = e.PlaylistId, 
-                            //Tracks = e.Tracks,
-                        });
-
+                        {
+                            Title = e.Title,
+                            PlaylistId = e.PlaylistId,
+                            NumberOfTracks = ctx.Playlists.Where(x => x.IsActive == true && x.PlaylistId == e.PlaylistId).Select(x => x.Tracks).Count()
+                        }).OrderByDescending(d => d.NumberOfTracks);
+                        
                 return query.ToArray();
             }
         }
         
-
-        //// Get Playlist by ID
-        public ListPlaylistModel GetPlaylistById(int playlistId)
+        public IEnumerable<TrackListModel> GetPlaylistContent(int playlistId)
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.Playlists.Single(e => e.PlaylistId == playlistId);
+                var query = ctx.Playlists.Single(e => e.PlaylistId == playlistId).Tracks
+                    .Select(p => new TrackListModel()
+                    {
+                        TrackId = p.TrackId,
+                        Title = p.Title
+                    });
 
-                return new ListPlaylistModel
-                {
-
-                    Title = entity.Title,
-                    PlaylistId = entity.PlaylistId,
-                    // Tracks = entity.Tracks,
-                    NumberOfTracks = entity.NumberOfTracks
-
-                };
-
+                return query;
             }
         }
+       
+
         public void DeletePlaylist(int playlistId)
         {
             using (var ctx = new ApplicationDbContext())
@@ -103,5 +100,6 @@ namespace Services
                 ctx.SaveChanges();
             }
         }
+
     }
 }
