@@ -6,6 +6,7 @@ using Models.Track;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -29,8 +30,12 @@ namespace Services
 
             using (var ctx = new ApplicationDbContext())
             {
-                ctx.Queues.Add(entity);
-                ctx.SaveChanges();
+                var check = ctx.Queues.Where(e => e.UserId == _userId).ToList();
+                if (check.Count() == 0)
+                {
+                    ctx.Queues.Add(entity);
+                    ctx.SaveChanges();
+                }
             }
         }
 
@@ -40,8 +45,10 @@ namespace Services
             {
                 var track = ctx.Tracks.Single(e => e.TrackId == model.TrackId && e.IsActive == true);
                 var queue = ctx.Queues.Single(q => q.UserId == _userId);
-
-                queue.Tracks.Add(track);
+                if (model.PlayNext == true)
+                    queue.Tracks.Prepend(track);
+                else
+                    queue.Tracks.Append(track);
                 ctx.SaveChanges();
             }
         }
@@ -52,10 +59,15 @@ namespace Services
             {
                 var tracks = ctx.Tracks.Where(e => e.AlbumId == model.AlbumId && e.IsActive == true);
                 var queue = ctx.Queues.Single(q => q.UserId == _userId);
-
-                foreach (Track track in tracks)
+                if (model.PlayNext == true)
                 {
-                    queue.Tracks.Add(track);
+                    foreach (Track track in tracks)
+                        queue.Tracks.Prepend(track);
+                }
+                else
+                {
+                    foreach (Track track in tracks)
+                        queue.Tracks.Append(track);
                 }
 
                 ctx.SaveChanges();
@@ -68,10 +80,15 @@ namespace Services
             {
                 var tracks = ctx.Tracks.Where(e => e.BandId == model.BandId && e.IsActive == true);
                 var queue = ctx.Queues.Single(q => q.UserId == _userId);
-
-                foreach (Track track in tracks)
+                if (model.PlayNext == true)
                 {
-                    queue.Tracks.Add(track);
+                    foreach (Track track in tracks)
+                        queue.Tracks.Prepend(track);
+                }
+                else
+                {
+                    foreach (Track track in tracks)
+                        queue.Tracks.Append(track);
                 }
 
                 ctx.SaveChanges();
@@ -123,7 +140,13 @@ namespace Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-
+                var queueTracks = ctx.Queues.Single(e => e.UserId == _userId).Tracks;
+                var playlist = ctx.Playlists.Single(e => e.IsActive == true && e.PlaylistId == playlistId);
+                foreach (Track track in queueTracks)
+                {
+                    ctx.Playlists.Single(e => e.IsActive == true && e.PlaylistId == playlistId).Tracks.Add(track);
+                }
+                ctx.SaveChanges();
             }
         }
 

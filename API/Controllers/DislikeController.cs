@@ -22,7 +22,6 @@ namespace API.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("Track/{id}")]
-        
         public IHttpActionResult PostTrackDislike(int id)
         {
             DislikeService dislikeService = CreateDislikeService();
@@ -34,6 +33,7 @@ namespace API.Controllers
 
             return Ok();
         }
+
         //Post api/dislike/album
         /// <summary>
         /// Create a Dislike for Album
@@ -53,6 +53,7 @@ namespace API.Controllers
 
             return Ok();
         }
+
         //post api/dislike/band
         /// <summary>
         /// Create a Dislike for Band
@@ -72,6 +73,7 @@ namespace API.Controllers
 
             return Ok();
         }
+
         //Get api/dislikes
         /// <summary>
         /// Get all Dislikes
@@ -87,6 +89,7 @@ namespace API.Controllers
 
             return Ok(dislikes);
         }
+
         //Delete api/dislike{id}
         /// <summary>
         /// Delete a Dislike
