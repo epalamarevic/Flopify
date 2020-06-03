@@ -17,6 +17,11 @@ namespace API.Controllers
     public class PlaylistController : ApiController
     {
         //post a playlist
+        /// <summary>
+        /// Create a Playlist
+        /// </summary>
+        /// <param name="playlist"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("Playlist")]
         public IHttpActionResult PostPlaylist(CreatePlaylist playlist)
@@ -31,6 +36,11 @@ namespace API.Controllers
             return Ok();
         }
 
+        /// <summary>
+        /// Post a Track to Playlist
+        /// </summary>
+        /// <param name="trackAdd"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("Playlist/PostTrackToPlaylist")]
         public IHttpActionResult PostTrackToPlaylist(TrackAddModel trackAdd)
@@ -45,6 +55,11 @@ namespace API.Controllers
             return Ok();
         }
 
+        /// <summary>
+        /// Get List of Playlists
+        /// </summary>
+        /// <returns></returns>
+
         [HttpGet]
         [Route("Playlist")]
         public IHttpActionResult GetPlaylist()
@@ -56,17 +71,27 @@ namespace API.Controllers
             return Ok(playlists);
         }
 
+        /// <summary>
+        /// Get Contents of a Playlist
+        /// </summary>
+        /// <param name="playlistId"></param>
+        /// <returns></returns>
         [HttpGet]
-        [Route("Playlist/{id}")]
-        public IHttpActionResult GetPlaylistbyID(int id)
+        [Route("PlaylistContent")]
+        public IHttpActionResult GetPlaylistbyContent(int playlistId)
         {
             PlaylistService playlistService = CreatePlaylistService();
 
-            var playlist = playlistService.GetPlaylistById(id);
+            var playlist = playlistService.GetPlaylistContent(playlistId);
 
             return Ok(playlist);
         }
 
+        /// <summary>
+        /// Remove a Playlist
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete]
         [Route("Playlist/{id}")]
         public IHttpActionResult DeletePlaylistById(int id)

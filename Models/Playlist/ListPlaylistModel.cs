@@ -16,9 +16,5 @@ namespace Models
         public string Title { get; set; }
 
         public int NumberOfTracks { get; set; }
-        
-        public int[] Tracks { get; set; }
-        
-        }
     }
 }
