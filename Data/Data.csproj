@@ -88,9 +88,13 @@
     <Compile Include="Band.cs" />
     <Compile Include="Dislike.cs" />
     <Compile Include="IdentityModels.cs" />
-    <Compile Include="Migrations\202006030046256_fixedRelationship.cs" />
-    <Compile Include="Migrations\202006030046256_fixedRelationship.Designer.cs">
-      <DependentUpon>202006030046256_fixedRelationship.cs</DependentUpon>
+    <Compile Include="Migrations\202006030029281_first.cs" />
+    <Compile Include="Migrations\202006030029281_first.Designer.cs">
+      <DependentUpon>202006030029281_first.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006030031182_two.cs" />
+    <Compile Include="Migrations\202006030031182_two.Designer.cs">
+      <DependentUpon>202006030031182_two.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Playlist.cs" />
@@ -103,8 +107,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202006030046256_fixedRelationship.resx">
-      <DependentUpon>202006030046256_fixedRelationship.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202006030029281_first.resx">
+      <DependentUpon>202006030029281_first.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006030031182_two.resx">
+      <DependentUpon>202006030031182_two.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
