@@ -18,7 +18,7 @@ namespace Services
         {
             _userId = userId;
         }
-
+        //Create a Queue
         public void CreateQueue()
         {
             var entity = new Queue()
@@ -37,7 +37,7 @@ namespace Services
                 }
             }
         }
-
+        //Add track to Queue
         public void AddTrackToQueue(int trackId)
         {
             using (var ctx = new ApplicationDbContext())
@@ -47,25 +47,29 @@ namespace Services
                 ctx.SaveChanges();
             }
         }
-
+        //Add tracks from album to queue
         public void AddAlbumToQueue(int albumId)
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var tracks = ctx.Tracks.Where(e => e.AlbumId == albumId && e.IsActive == true);
+                var tracks = ctx.Tracks.Where(e => e.AlbumId == albumId && e.IsActive == true).ToList();
                 var queue = ctx.Queues.Single(q => q.UserId == _userId);
                 foreach (Track track in tracks)
-                    queue.Tracks.Add(track);
-
+                {
+                    if(!queue.Tracks.Contains(track))
+                    {
+                        queue.Tracks.Add(track);
+                    }
+                }
                 ctx.SaveChanges();
             }
         }
-
+        //Add tracks from band to queue
         public void AddBandToQueue(int bandId)
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var tracks = ctx.Tracks.Where(e => e.BandId == bandId && e.IsActive == true);
+                var tracks = ctx.Tracks.Where(e => e.BandId == bandId && e.IsActive == true).ToList();
                 var queue = ctx.Queues.Single(q => q.UserId == _userId);
                 foreach (Track track in tracks)
                     queue.Tracks.Add(track);
@@ -73,7 +77,7 @@ namespace Services
                 ctx.SaveChanges();
             }
         }
-
+        //Get all tracks in queue
         public IEnumerable<TrackListModel> GetAllFromQueue()
         {
             using (var ctx = new ApplicationDbContext())
@@ -94,7 +98,7 @@ namespace Services
                 return query.ToArray();
             }
         }
-
+        //Create a playlist from queue
         public void CreatePlaylistFromQueue(CreatePlaylist model)
         {
             var entity = new Playlist()
@@ -114,7 +118,7 @@ namespace Services
                 ctx.SaveChanges();
             }
         }
-
+        //Add tracks to playlist from queue
         public void AddToPlayListFromQueue(int playlistId)
         {
             using (var ctx = new ApplicationDbContext())
@@ -128,7 +132,7 @@ namespace Services
                 ctx.SaveChanges();
             }
         }
-
+        //Clear out the queue
         public void ClearQueue()
         {
             using (var ctx = new ApplicationDbContext())
