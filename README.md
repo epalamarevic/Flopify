@@ -1,7 +1,8 @@
-# Flopify ##(flop-ify)
+# Flopify 
+## (flop-ify)
 
-######Do you listen to the top 100 songs on iTUNES or the radio? 
-######Have you ever heard of those non-popular songs? 
+#### Do you listen to the top 100 songs on iTUNES or the radio?
+#### Have you ever heard of those non-popular songs? 
 This repository is the back-end API of a music streaming site. Only this repo creates music for listeners where Bands, Albums and Tracks are disliked the most, hence music that flopped. Created for listeners to appreciate quality music. 
 
 # Installation
@@ -25,8 +26,8 @@ XML programming language was used in contribution to Swagger UI. When you run th
 Postman was also a contributor to the project. If you prefer the use of postman, please do so. 
 
 # Credits
--Emina Palamarevic 
--Abrame Pithey
+- Emina Palamarevic 
+- Abrame Pithey
 
 # License
 This project is in correspondence with MIT License.
