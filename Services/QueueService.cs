@@ -1,7 +1,6 @@
 ﻿using Contracts;
 using Data;
 using Models;
-using Models.Queue;
 using Models.Track;
 using System;
 using System.Collections.Generic;
@@ -39,57 +38,37 @@ namespace Services
             }
         }
 
-        public void AddTrackToQueue(QueueUpdateAddTrackModel model)
+        public void AddTrackToQueue(int trackId)
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var track = ctx.Tracks.Single(e => e.TrackId == model.TrackId && e.IsActive == true);
-                var queue = ctx.Queues.Single(q => q.UserId == _userId);
-                if (model.PlayNext == true)
-                    queue.Tracks.Prepend(track);
-                else
-                    queue.Tracks.Append(track);
+                var track = ctx.Tracks.Single(e => e.TrackId == trackId && e.IsActive == true);
+                ctx.Queues.Single(q => q.UserId == _userId).Tracks.Add(track);
                 ctx.SaveChanges();
             }
         }
 
-        public void AddAlbumToQueue(QueueUpdateAddAlbumModel model)
+        public void AddAlbumToQueue(int albumId)
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var tracks = ctx.Tracks.Where(e => e.AlbumId == model.AlbumId && e.IsActive == true);
+                var tracks = ctx.Tracks.Where(e => e.AlbumId == albumId && e.IsActive == true);
                 var queue = ctx.Queues.Single(q => q.UserId == _userId);
-                if (model.PlayNext == true)
-                {
-                    foreach (Track track in tracks)
-                        queue.Tracks.Prepend(track);
-                }
-                else
-                {
-                    foreach (Track track in tracks)
-                        queue.Tracks.Append(track);
-                }
+                foreach (Track track in tracks)
+                    queue.Tracks.Add(track);
 
                 ctx.SaveChanges();
             }
         }
 
-        public void AddBandToQueue(QueueUpdateAddBandModel model)
+        public void AddBandToQueue(int bandId)
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var tracks = ctx.Tracks.Where(e => e.BandId == model.BandId && e.IsActive == true);
+                var tracks = ctx.Tracks.Where(e => e.BandId == bandId && e.IsActive == true);
                 var queue = ctx.Queues.Single(q => q.UserId == _userId);
-                if (model.PlayNext == true)
-                {
-                    foreach (Track track in tracks)
-                        queue.Tracks.Prepend(track);
-                }
-                else
-                {
-                    foreach (Track track in tracks)
-                        queue.Tracks.Append(track);
-                }
+                foreach (Track track in tracks)
+                    queue.Tracks.Add(track);
 
                 ctx.SaveChanges();
             }
@@ -112,7 +91,7 @@ namespace Services
                             PlayTime = q.PlayTime
                         });
 
-                return query;
+                return query.ToArray();
             }
         }
 
