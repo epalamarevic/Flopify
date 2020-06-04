@@ -19,17 +19,17 @@ namespace Data
         
         public bool IsActive { get; set; } = true;
 
-        public int NumberOfTracks
-        {
-            get
-            {
-                using (var ctx = new ApplicationDbContext())
-                {
-                    var Track= ctx.Playlists.Where(e => e.Tracks == Tracks && e.IsActive == true).Count();
-                    return Track;
-                }
-            }
-        }
+        //public int NumberOfTracks
+        //{
+        //    get
+        //    {
+        //        using (var ctx = new ApplicationDbContext())
+        //        {
+        //            var Track= ctx.Playlists.Where(e => e.Tracks == Tracks && e.IsActive == true).Count();
+        //            return Track;
+        //        }
+        //    }
+        //}
     }
 
 }

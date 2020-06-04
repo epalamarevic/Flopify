@@ -64,10 +64,11 @@ namespace Services
                             PlaylistId = e.PlaylistId,
                             NumberOfTracks = ctx.Playlists.Where(x => x.IsActive == true && x.PlaylistId == e.PlaylistId).Select(x => x.Tracks).Count()
                         }).OrderByDescending(d => d.NumberOfTracks);
-                        
+                
                 return query.ToArray();
             }
         }
+
         
         public IEnumerable<TrackListModel> GetPlaylistContent(int playlistId)
         {
@@ -77,7 +78,8 @@ namespace Services
                     .Select(p => new TrackListModel()
                     {
                         TrackId = p.TrackId,
-                        Title = p.Title
+                        Title = p.Title,
+                        PlayTime = p.PlayTime
                     });
 
                 return query;
