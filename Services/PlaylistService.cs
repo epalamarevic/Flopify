@@ -85,7 +85,7 @@ namespace Services
                 return query;
             }
         }
-       
+
 
         public void DeletePlaylist(int playlistId)
         {
