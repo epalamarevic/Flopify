@@ -62,8 +62,8 @@ namespace Services
                         {
                             Title = e.Title,
                             PlaylistId = e.PlaylistId,
-                            NumberOfTracks = ctx.Playlists.Where(x => x.IsActive == true && x.PlaylistId == e.PlaylistId).Select(x => x.Tracks).Count()
-                        });
+                            NumberOfTracks = e.Tracks.Count()
+                        }) ;
                 
                 return query.ToArray();
             }
