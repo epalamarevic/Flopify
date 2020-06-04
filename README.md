@@ -20,8 +20,8 @@ Once your account is registered, you may authorize requests for Band, Album, Tra
 Follow the descriptions for each of the Rest Methods; Post, Get, Put, Patch to understand what is happening. 
 
 # Contribution
-XML programming language was used in contribution to Swagger UI. When you run the project in Swagger it specifically shows you what each RestAPI Method is doing. 
-Postman was also a contributor to the project. If you prefer the use of postman, please do so. 
+XML programming language was used in contribution to Swagger UI. When you test the project in Swagger it specifically shows you what each RestAPI Method is doing. 
+Postman was also a contributor to the project. If you prefer the use of postman to test to project, please do so. 
 
 # Credits
 - Emina Palamarevic 
