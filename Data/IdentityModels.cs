@@ -51,12 +51,13 @@ namespace Data
                 .Add(new IdentityUserLoginConfiguration())
                 .Add(new IdentityUserRoleConfiguration());
 
-
             modelBuilder.Entity<Playlist>()
                 .HasMany(p => p.Tracks)
                 .WithMany(t =>t.Playlists);
 
-
+            modelBuilder.Entity<Queue>()
+                .HasMany(c => c.Tracks)
+                .WithMany(x => x.Queues);
         }
     }
 

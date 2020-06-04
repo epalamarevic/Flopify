@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNet.Identity;
 using Models;
-using Models.Queue;
 using Services;
 using System;
 using System.Collections.Generic;
@@ -38,43 +37,43 @@ namespace API.Controllers
         }
 
         [HttpPatch]
-        [Route("Track")]
-        public IHttpActionResult AddTrack(QueueUpdateAddTrackModel model)
+        [Route("Track/{id}")]
+        public IHttpActionResult AddTrack(int id)
         {
             QueueService queueService = CreateQueueService();
 
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            queueService.AddTrackToQueue(model);
+            queueService.AddTrackToQueue(id);
 
             return Ok();
         }
 
         [HttpPatch]
-        [Route("Album")]
-        public IHttpActionResult AddAlbum(QueueUpdateAddAlbumModel model)
+        [Route("Album/{id}")]
+        public IHttpActionResult AddAlbum(int id)
         {
             QueueService queueService = CreateQueueService();
 
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            queueService.AddAlbumToQueue(model);
+            queueService.AddAlbumToQueue(id);
 
             return Ok();
         }
 
         [HttpPatch]
-        [Route("Band")]
-        public IHttpActionResult AddBand(QueueUpdateAddBandModel model)
+        [Route("Band/{id}")]
+        public IHttpActionResult AddBand(int id)
         {
             QueueService queueService = CreateQueueService();
 
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            queueService.AddBandToQueue(model);
+            queueService.AddBandToQueue(id);
 
             return Ok();
         }
