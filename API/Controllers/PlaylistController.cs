@@ -76,27 +76,26 @@ namespace API.Controllers
         /// <summary>
         /// Get Contents of a Playlist
         /// </summary>
-        /// <param name="playlistId">Mandatory: PlaylistId</param>
         /// <returns></returns>
         [HttpGet]
         [Route("{id}")]
-        public IHttpActionResult GetPlaylistbyContent(int playlistId)
+        public IHttpActionResult GetPlaylistbyContent(int id)
         {
             PlaylistService playlistService = CreatePlaylistService();
 
-            var playlist = playlistService.GetPlaylistContent(playlistId);
+            var playlist = playlistService.GetPlaylistContent(id);
 
             return Ok(playlist);
         }
 
-        //Patch api/playlist/deleteplaylisttrack
+        //Patch api/playlist/deletetrack
         /// <summary>
         /// Remove a Track from a Playlist
         /// </summary>
         /// <param name="model">Mandatory: PlaylistId, TrackId</param>
         /// <returns></returns>
         [HttpPatch]
-        [Route("DeletePlaylistTrack")]
+        [Route("DeleteTrack")]
         public IHttpActionResult DeleteTrackById(PlaylistTrackDeleteModel model)
         {
             PlaylistService playlistService = CreatePlaylistService();

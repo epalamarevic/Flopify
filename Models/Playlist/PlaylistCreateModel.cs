@@ -9,6 +9,5 @@ namespace Models
     public class PlaylistCreateModel
     {
         public string Title { get; set; }
-        public Guid UserId { get; set; }
     }
 }
