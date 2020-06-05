@@ -148,11 +148,26 @@ namespace API.Controllers
 
         //Patch api/queue
         /// <summary>
-        /// Clear the Queue
+        /// Remove a Track from the Queue
         /// </summary>
-        /// <param name="queue"></param>
         /// <returns></returns>
         [HttpPatch]
+        [Route("Remove/{id}")]
+        public IHttpActionResult DeleteTrack(int id)
+        {
+            QueueService queueService = CreateQueueService();
+
+            queueService.DeleteTrackFromQueue(id);
+
+            return Ok();
+        }
+
+        //Put api/queue
+        /// <summary>
+        /// Clear the Queue
+        /// </summary>
+        /// <returns></returns>
+        [HttpPut]
         [Route("Clear")]
         public IHttpActionResult ClearQueue()
         {

@@ -18,6 +18,7 @@ namespace Services
         {
             _userId = userId;
         }
+
         //Create a Queue
         public void CreateQueue()
         {
@@ -37,6 +38,7 @@ namespace Services
                 }
             }
         }
+
         //Add track to Queue
         public void AddTrackToQueue(int trackId)
         {
@@ -47,6 +49,7 @@ namespace Services
                 ctx.SaveChanges();
             }
         }
+
         //Add tracks from album to queue
         public void AddAlbumToQueue(int albumId)
         {
@@ -64,6 +67,7 @@ namespace Services
                 ctx.SaveChanges();
             }
         }
+
         //Add tracks from band to queue
         public void AddBandToQueue(int bandId)
         {
@@ -77,6 +81,7 @@ namespace Services
                 ctx.SaveChanges();
             }
         }
+
         //Get all tracks in queue
         public IEnumerable<TrackListModel> GetAllFromQueue()
         {
@@ -99,6 +104,7 @@ namespace Services
             }
         }
 
+        // Method to Create a new Playlist from the current Queue
         public void CreatePlaylistFromQueue(PlaylistCreateModel model)
         {
             var entity = new Playlist()
@@ -118,6 +124,7 @@ namespace Services
                 ctx.SaveChanges();
             }
         }
+
         //Add tracks to playlist from queue
         public void AddToPlayListFromQueue(int playlistId)
         {
@@ -132,6 +139,20 @@ namespace Services
                 ctx.SaveChanges();
             }
         }
+
+        // Method to remove a Track from the Queue
+        public void DeleteTrackFromQueue(int trackId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var track = ctx.Queues.Single(e => e.UserId == _userId).Tracks.Single(t => t.TrackId == trackId);
+
+                ctx.Queues.Single(e => e.UserId == _userId).Tracks.Remove(track);
+
+                ctx.SaveChanges();
+            }
+        }
+
         //Clear out the queue
         public void ClearQueue()
         {
