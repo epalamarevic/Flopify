@@ -10,9 +10,10 @@ namespace Contracts
 {
    public interface IPlaylistService
     {
-        void CreatePlaylist(CreatePlaylist model);
-        void AddTrackToPlaylist(TrackAddModel ids);
-        IEnumerable<ListPlaylistModel> GetAllPlaylists();
+        void CreatePlaylist(PlaylistCreateModel model);
+        void AddTrackToPlaylist(PlaylistTrackAddModel ids);
+        void DeleteTrack(PlaylistTrackDeleteModel model);
+        IEnumerable<PlaylistListModel> GetAllPlaylists();
         void DeletePlaylist(int playlistId);
     }
 }

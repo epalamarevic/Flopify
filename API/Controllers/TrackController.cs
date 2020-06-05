@@ -21,7 +21,7 @@ namespace API.Controllers
         /// <summary>
         /// Create a Track
         /// </summary>
-        /// <param name="model"></param>
+        /// <param name="model">Mandatory: Title, AlbumId, PlayTime</param>
         /// <returns></returns>
         [HttpPost]
         [Route("Track")]
@@ -69,14 +69,14 @@ namespace API.Controllers
             return Ok(tracks);
         }
 
-        //Get api/track{id}
+        //Get api/track/{id}
         /// <summary>
         /// Get a Track by TrackID
         /// </summary>
-        /// <param name="id">Mandatory: TrackID </param>
+        /// <param name="id">Mandatory: TrackId</param>
         /// <returns></returns>
         [HttpGet]
-       [Route("Track/{id}")]
+        [Route("Track/{id}")]
         public IHttpActionResult GetTrack(int id)
         {
             TrackService trackService = CreateTrackService();
@@ -86,11 +86,11 @@ namespace API.Controllers
             return Ok(track);
         }
 
-        //Put api/track{id}
+        //Put api/track/{id}
         /// <summary>
         /// Update a Track
         /// </summary>
-        /// <param name="model">Mandatory: TrackID</param>
+        /// <param name="model">Mandatory: TrackId</param>
         /// <returns></returns>
        [HttpPut]
        [Route("Track")]
@@ -106,13 +106,13 @@ namespace API.Controllers
             return Ok();
         }
 
-        //Delete api/track{id}
+        //Patch api/track/{id}
         /// <summary>
         /// Delete a Track
         /// </summary>
-        /// <param name="id">Mandatory: TrackID</param>
+        /// <param name="id">Mandatory: TrackId</param>
         /// <returns></returns>
-        [HttpDelete]
+        [HttpPatch]
         [Route("Track/{id}")]
         public IHttpActionResult DeleteTrackById(int id)
         {

@@ -13,18 +13,18 @@ using System.Web.Http;
 namespace API.Controllers
 {
     [Authorize]
-    [RoutePrefix("Flopify")]
+    [RoutePrefix("Flopify/Playlist")]
     public class PlaylistController : ApiController
     {
-        //post a playlist
+        //Post api/playlist
         /// <summary>
         /// Create a Playlist
         /// </summary>
-        /// <param name="playlist"></param>
+        /// <param name="playlist">Mandatory: Title</param>
         /// <returns></returns>
         [HttpPost]
-        [Route("Playlist")]
-        public IHttpActionResult PostPlaylist(CreatePlaylist playlist)
+        [Route]
+        public IHttpActionResult PostPlaylist(PlaylistCreateModel playlist)
         {
             PlaylistService playlistService = CreatePlaylistService();
 
@@ -36,32 +36,33 @@ namespace API.Controllers
             return Ok();
         }
 
+        //Patch api/playlist/posttracktoplaylist
         /// <summary>
         /// Post a Track to Playlist
         /// </summary>
-        /// <param name="trackAdd"></param>
+        /// <param name="track">Mandatory: PlaylistId, TrackId</param>
         /// <returns></returns>
-        [HttpPost]
-        [Route("Playlist/PostTrackToPlaylist")]
-        public IHttpActionResult PostTrackToPlaylist(TrackAddModel trackAdd)
+        [HttpPatch]
+        [Route("PostTrackToPlaylist")]
+        public IHttpActionResult PostTrackToPlaylist(PlaylistTrackAddModel track)
         {
             PlaylistService playlistService = CreatePlaylistService();
 
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            playlistService.AddTrackToPlaylist(trackAdd);
+            playlistService.AddTrackToPlaylist(track);
 
             return Ok();
         }
 
+        //Get api/playlist
         /// <summary>
-        /// Get List of Playlists
+        /// Get a List of Playlists
         /// </summary>
         /// <returns></returns>
-
         [HttpGet]
-        [Route("Playlist")]
+        [Route]
         public IHttpActionResult GetPlaylist()
         {
             PlaylistService playlistService = CreatePlaylistService();
@@ -71,13 +72,14 @@ namespace API.Controllers
             return Ok(playlists);
         }
 
+        //Get api/playlist/{id}
         /// <summary>
         /// Get Contents of a Playlist
         /// </summary>
-        /// <param name="playlistId"></param>
+        /// <param name="playlistId">Mandatory: PlaylistId</param>
         /// <returns></returns>
         [HttpGet]
-        [Route("PlaylistContent")]
+        [Route("{id}")]
         public IHttpActionResult GetPlaylistbyContent(int playlistId)
         {
             PlaylistService playlistService = CreatePlaylistService();
@@ -87,13 +89,31 @@ namespace API.Controllers
             return Ok(playlist);
         }
 
+        //Patch api/playlist/deleteplaylisttrack
+        /// <summary>
+        /// Remove a Track from a Playlist
+        /// </summary>
+        /// <param name="model">Mandatory: PlaylistId, TrackId</param>
+        /// <returns></returns>
+        [HttpPatch]
+        [Route("DeletePlaylistTrack")]
+        public IHttpActionResult DeleteTrackById(PlaylistTrackDeleteModel model)
+        {
+            PlaylistService playlistService = CreatePlaylistService();
+
+            playlistService.DeleteTrack(model);
+
+            return Ok();
+        }
+
+        //Patch api/playlist/{id}
         /// <summary>
         /// Remove a Playlist
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">Mandatory: PlaylistId</param>
         /// <returns></returns>
-        [HttpDelete]
-        [Route("Playlist/{id}")]
+        [HttpPatch]
+        [Route("{id}")]
         public IHttpActionResult DeletePlaylistById(int id)
         {
             PlaylistService playlistService = CreatePlaylistService();
@@ -102,7 +122,6 @@ namespace API.Controllers
 
             return Ok();
         }
-
 
         private PlaylistService CreatePlaylistService()
         {

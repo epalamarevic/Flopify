@@ -98,8 +98,8 @@ namespace Services
                 return query.ToArray();
             }
         }
-        //Create a playlist from queue
-        public void CreatePlaylistFromQueue(CreatePlaylist model)
+
+        public void CreatePlaylistFromQueue(PlaylistCreateModel model)
         {
             var entity = new Playlist()
             {

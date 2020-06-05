@@ -14,19 +14,21 @@ namespace Services
 {
     public class PlaylistService : IPlaylistService
     {
+        // Constructor to catch the User Id that is passed in through the Controller
         private readonly Guid _userId;
         public PlaylistService(Guid userId)
         {
             _userId = userId;
         }
 
-        //Create a Playlist
-        public void CreatePlaylist(CreatePlaylist model)
+        // Method to Create a Playlist
+        public void CreatePlaylist(PlaylistCreateModel model)
         {
             var entity =
                 new Playlist()
                 {
                     Title = model.Title,
+                    UserId = _userId,
                     Tracks = new List<Track>()
                 };
 
@@ -38,8 +40,8 @@ namespace Services
             }
         }
 
-        //ADD TRACKS TO PLAYLIST
-        public void AddTrackToPlaylist(TrackAddModel ids)
+        // Method to add Tracks to a Playlist
+        public void AddTrackToPlaylist(PlaylistTrackAddModel ids)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -50,15 +52,15 @@ namespace Services
             }
         }
 
-        ////Get list of Playlist
-        public IEnumerable<ListPlaylistModel> GetAllPlaylists()
+        // Method to Get a list of Playlists
+        public IEnumerable<PlaylistListModel> GetAllPlaylists()
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var query = ctx.Playlists
                     .Where(e => e.IsActive == true)
                     .Select(
-                        e => new ListPlaylistModel
+                        e => new PlaylistListModel
                         {
                             Title = e.Title,
                             PlaylistId = e.PlaylistId,
@@ -69,7 +71,7 @@ namespace Services
             }
         }
 
-        
+        // Method to Get the contents of a Playlist
         public IEnumerable<TrackListModel> GetPlaylistContent(int playlistId)
         {
             using (var ctx = new ApplicationDbContext())
@@ -86,7 +88,29 @@ namespace Services
             }
         }
 
+        // Method to remove a Track from a Playlist
+        public void DeleteTrack(PlaylistTrackDeleteModel model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var track =
+                    ctx
+                    .Playlists
+                    .Single(e => e.PlaylistId == model.PlaylistId && e.IsActive == true)
+                    .Tracks
+                    .Single(t => t.TrackId == model.TrackId);
 
+                ctx
+                    .Playlists
+                    .Single(e => e.PlaylistId == model.PlaylistId && e.IsActive == true)
+                    .Tracks
+                    .Remove(track);
+
+                ctx.SaveChanges();
+            }
+        }
+       
+        // Method to Delete a Playlist
         public void DeletePlaylist(int playlistId)
         {
             using (var ctx = new ApplicationDbContext())

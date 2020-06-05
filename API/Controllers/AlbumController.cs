@@ -103,13 +103,13 @@ namespace API.Controllers
             return Ok();
         }
 
-        //Delete api/album{id}
+        //Patch api/album{id}
         /// <summary>
         /// Delete a Album
         /// </summary>
         /// <param name="id">Mandatory: AlbumID </param>
         /// <returns></returns>
-       [HttpDelete]
+       [HttpPatch]
        [Route("Album/{id}")]
         public IHttpActionResult DeleteAlbumById(int id)
         {
