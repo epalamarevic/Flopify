@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Models.Band
 {
-    public class BandEditModel
+    public class BandUpdateModel
     {
         public int BandId { get; set; }
         public string Name { get; set; }

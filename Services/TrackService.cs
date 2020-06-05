@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Services
 {
-    public class TrackService : ITrackServices
+    public class TrackService : ITrackService
     {
         // Constructor to catch the User Id that is passed in through the Controller
         private readonly Guid _userId;
@@ -19,26 +19,29 @@ namespace Services
         }
 
         // Method to Create a Track
-        public void CreateTrack(CreateTrack model)
+        public void CreateTrack(TrackCreateModel model)
         {
-            var entity =
-                new Track()
-                {
-                    Title = model.Title,
-                    AlbumId = model.AlbumId,
-                    PlayTime = model.PlayTime,
-                    UserId = _userId
-                };
-
             using (var ctx = new ApplicationDbContext())
             {
+                var bandId = ctx.Albums.Single(e => e.AlbumId == model.AlbumId).BandId;
+
+                var entity =
+                    new Track()
+                    {
+                        Title = model.Title,
+                        AlbumId = model.AlbumId,
+                        BandId = bandId,
+                        PlayTime = model.PlayTime,
+                        UserId = _userId
+                    };
+
                 ctx.Tracks.Add(entity);
                 ctx.SaveChanges();
             }
         }
 
         // Method to List all Tracks
-        public IEnumerable<TrackList> GetAllTracks()
+        public IEnumerable<TrackListModel> GetAllTracks()
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -48,9 +51,9 @@ namespace Services
                         .Where(e => e.IsActive == true)
                         .Select(
                             e =>
-                                new TrackList
+                                new TrackListModel
                                 {
-                                    TrackId= e.TrackId,
+                                    TrackId = e.TrackId,
                                     Title = e.Title,
                                     PlayTime = e.PlayTime
                                 }
@@ -60,8 +63,32 @@ namespace Services
             }
         }
 
+        // Method to List all Tracks, ordered by most Disliked
+        public IEnumerable<TrackListByDislikesModel> GetAllTracksByDislikes()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                        .Tracks
+                        .Where(e => e.IsActive == true)
+                        .Select(
+                            e =>
+                                new TrackListByDislikesModel
+                                {
+                                    TrackId = e.TrackId,
+                                    Title = e.Title,
+                                    PlayTime = e.PlayTime,
+                                    Dislikes = ctx.Dislikes.Where(x => x.IsActive == true && x.TrackId == e.TrackId).Count()
+                                }
+                        ).OrderByDescending(d => d.Dislikes);
+
+                return query.ToArray();
+            }
+        }
+
         // Method to Get a specific Track by the Track Id
-        public TrackDetail GetTrackById(int trackId)
+        public TrackDetailModel GetTrackById(int trackId)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -70,7 +97,7 @@ namespace Services
                         .Tracks
                         .Single(e => e.TrackId == trackId);
                 return
-                    new TrackDetail
+                    new TrackDetailModel
                     {
                         TrackId = entity.TrackId,
                         Title = entity.Title,
@@ -82,7 +109,7 @@ namespace Services
         }
 
         // Service to Update a Track by the Track Id
-        public void UpdateTrack(UpdateTrack model)
+        public void UpdateTrack(TrackUpdateModel model)
         {
             using (var ctx = new ApplicationDbContext())
             {

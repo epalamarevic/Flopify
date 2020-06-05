@@ -1,5 +1,6 @@
 ﻿using Contracts;
 using Microsoft.AspNet.Identity;
+using Models;
 using Models.Track;
 using Services;
 using System;
@@ -20,11 +21,11 @@ namespace API.Controllers
         /// <summary>
         /// Create a Track
         /// </summary>
-        /// <param name="model"></param>
+        /// <param name="model">Mandatory: Title, AlbumId, PlayTime</param>
         /// <returns></returns>
         [HttpPost]
         [Route("Track")]
-        public IHttpActionResult PostTrack(CreateTrack model)
+        public IHttpActionResult PostTrack(TrackCreateModel model)
         {
             TrackService trackService = CreateTrackService();
 
@@ -52,15 +53,30 @@ namespace API.Controllers
             return Ok(tracks);
         }
 
+        //Get api/track
+        /// <summary>
+        /// Get all Tracks in order of Dislikes
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("TrackByDislikes")]
+        public IHttpActionResult GetTracksByDislikes()
+        {
+            TrackService trackService = CreateTrackService();
 
-        //Get api/track{id}
+            var tracks = trackService.GetAllTracksByDislikes();
+
+            return Ok(tracks);
+        }
+
+        //Get api/track/{id}
         /// <summary>
         /// Get a Track by TrackID
         /// </summary>
-        /// <param name="id">Mandatory: TrackID </param>
+        /// <param name="id">Mandatory: TrackId</param>
         /// <returns></returns>
-       [HttpGet]
-       [Route("Track/{id}")]
+        [HttpGet]
+        [Route("Track/{id}")]
         public IHttpActionResult GetTrack(int id)
         {
             TrackService trackService = CreateTrackService();
@@ -70,15 +86,15 @@ namespace API.Controllers
             return Ok(track);
         }
 
-        //Put api/track{id}
+        //Put api/track/{id}
         /// <summary>
         /// Update a Track
         /// </summary>
-        /// <param name="model">Mandatory: TrackID</param>
+        /// <param name="model">Mandatory: TrackId</param>
         /// <returns></returns>
        [HttpPut]
        [Route("Track")]
-        public IHttpActionResult PutTrack(UpdateTrack model)
+        public IHttpActionResult PutTrack(TrackUpdateModel model)
         {
             TrackService trackService = CreateTrackService();
 
@@ -90,13 +106,13 @@ namespace API.Controllers
             return Ok();
         }
 
-        //Delete api/track{id}
+        //Patch api/track/{id}
         /// <summary>
         /// Delete a Track
         /// </summary>
-        /// <param name="id">Mandatory: TrackID</param>
+        /// <param name="id">Mandatory: TrackId</param>
         /// <returns></returns>
-        [HttpDelete]
+        [HttpPatch]
         [Route("Track/{id}")]
         public IHttpActionResult DeleteTrackById(int id)
         {
@@ -113,5 +129,7 @@ namespace API.Controllers
             var trackService = new TrackService(userId);
             return trackService;
         }
+
+        
     }
 }

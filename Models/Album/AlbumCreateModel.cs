@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Models.Album
 {
-    public class AlbumUpdate
+    public class AlbumCreateModel
     {
-        public int AlbumId { get; set; }
         public string Title { get; set; }
         public DateTime DateReleased { get; set; }
+        public int BandId { get; set; }
     }
 }

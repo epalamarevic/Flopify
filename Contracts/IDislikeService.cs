@@ -9,10 +9,10 @@ namespace Contracts
 {
     public interface IDislikeService
     {
-        void CreateTrackDislike(CreateTrackDislikeModel dislike);
-        void CreateAlbumDislike(CreateAlbumDislikeModel dislike);
-        void CreateBandDislike(CreateBandDislikeModel dislike);
-        IEnumerable<ListDislikeModel> ListDislikes();
+        void CreateTrackDislike(int trackId);
+        void CreateAlbumDislike(int albumId);
+        void CreateBandDislike(int bandId);
+        IEnumerable<DislikeListModel> ListDislikes();
         void DeleteDislike(int dislikeId);
     }
 }

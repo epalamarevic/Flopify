@@ -29,7 +29,17 @@ namespace Data
         [ForeignKey("Album")]
         public int AlbumId { get; set; }
         public virtual Album Album { get; set; }
+
+        [ForeignKey("Band")]
+        public int BandId { get; set; }
+        public virtual Band Band { get; set; }
+
         public Guid UserId { get; set; }
         public bool IsActive { get; set; } = true;
+
+        public virtual ICollection<Playlist> Playlists { get; set; }
+        public virtual ICollection<Queue> Queues { get; set; }
     }
+
 }
+

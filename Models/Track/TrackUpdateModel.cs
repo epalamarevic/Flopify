@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Models.Track
 {
-    public class CreateTrack
+    public class TrackUpdateModel
     {
-        public string Title { get; set; }
-        public int AlbumId { get; set; }
+        public int TrackId { get; set; }
+        public string UpdatedTitle { get; set; }
         public int PlayTime { get; set; }
     }
 }

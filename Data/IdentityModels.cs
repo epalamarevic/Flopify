@@ -37,6 +37,8 @@ namespace Data
         public DbSet<Album> Albums { get; set; }
         public DbSet<Band> Bands { get; set; }
         public DbSet<Dislike> Dislikes { get; set; }
+        public DbSet<Playlist> Playlists { get; set; }
+        public DbSet<Queue> Queues { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -48,6 +50,14 @@ namespace Data
                 .Configurations
                 .Add(new IdentityUserLoginConfiguration())
                 .Add(new IdentityUserRoleConfiguration());
+
+            modelBuilder.Entity<Playlist>()
+                .HasMany(p => p.Tracks)
+                .WithMany(t =>t.Playlists);
+
+            modelBuilder.Entity<Queue>()
+                .HasMany(c => c.Tracks)
+                .WithMany(x => x.Queues);
         }
     }
 

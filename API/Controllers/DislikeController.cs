@@ -18,60 +18,62 @@ namespace API.Controllers
         /// <summary>
         /// Create a Dislike for Track
         /// </summary>
-        /// <param name="dislike">Mandatory: BandID, AlbumID, TrackID</param>
+        /// <param name="id">Mandatory: BandID, AlbumID, TrackID</param>
         /// <returns></returns>
         [HttpPost]
-        [Route("Track")]
-        
-        public IHttpActionResult PostTrackDislike(CreateTrackDislikeModel dislike)
+        [Route("Track/{id}")]
+        public IHttpActionResult PostTrackDislike(int id)
         {
             DislikeService dislikeService = CreateDislikeService();
 
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            dislikeService.CreateTrackDislike(dislike);
+            dislikeService.CreateTrackDislike(id);
 
             return Ok();
         }
+
         //Post api/dislike/album
         /// <summary>
         /// Create a Dislike for Album
         /// </summary>
-        /// <param name="dislike">Mandadtory: BandID, AlbumID</param>
+        /// <param name="id">Mandadtory: BandID, AlbumID</param>
         /// <returns></returns>
         [HttpPost]
-        [Route("Album")]
-        public IHttpActionResult PostAlbumDislike(CreateAlbumDislikeModel dislike)
+        [Route("Album/{id}")]
+        public IHttpActionResult PostAlbumDislike(int id)
         {
             DislikeService dislikeService = CreateDislikeService();
 
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            dislikeService.CreateAlbumDislike(dislike);
+            dislikeService.CreateAlbumDislike(id);
 
             return Ok();
         }
+
         //post api/dislike/band
         /// <summary>
         /// Create a Dislike for Band
         /// </summary>
-        /// <param name="dislike">Mandatory: BandID</param>
+        /// <param name="id">Mandatory: BandID</param>
         /// <returns></returns>
         [HttpPost]
-        [Route("Band")]
-        public IHttpActionResult PostBandDislike(CreateBandDislikeModel dislike)
+        [Route("Band/{id}")]
+        public IHttpActionResult PostBandDislike(int id)
         {
             DislikeService dislikeService = CreateDislikeService();
 
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            dislikeService.CreateBandDislike(dislike);
+            dislikeService.CreateBandDislike(id);
 
             return Ok();
         }
+
         //Get api/dislikes
         /// <summary>
         /// Get all Dislikes
@@ -87,13 +89,14 @@ namespace API.Controllers
 
             return Ok(dislikes);
         }
-        //Delete api/dislike{id}
+
+        //Patch api/dislike{id}
         /// <summary>
         /// Delete a Dislike
         /// </summary>
-        /// <param name="dislike">Mandatory: DislikeID</param>
+        /// <param name="id">Mandatory: DislikeID</param>
         /// <returns></returns>
-        [HttpDelete]
+        [HttpPatch]
         [Route("{id}")]
         public IHttpActionResult DeleteDislike(int id)
         {

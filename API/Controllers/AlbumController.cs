@@ -22,7 +22,7 @@ namespace API.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("Album")]
-        public IHttpActionResult PostAlbum(AlbumCreate model)
+        public IHttpActionResult PostAlbum(AlbumCreateModel model)
         {
             AlbumService albumService = CreateAlbumService();
 
@@ -50,13 +50,29 @@ namespace API.Controllers
             return Ok(albums);
         }
 
+        //Get api/album
+        /// <summary>
+        /// Get all Albums in order of Dislikes
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("AlbumByDislikes")]
+        public IHttpActionResult GetAlbumsByDislikes()
+        {
+            AlbumService albumService = CreateAlbumService();
+
+            var albums = albumService.GetAllAlbumsByDislikes();
+
+            return Ok(albums);
+        }
+
         //Get api/album{id}
         /// <summary>
         /// Get Album by AlbumID
         /// </summary>
         /// <param name="id">Mandatory: AlbumID </param>
         /// <returns></returns>
-       [HttpGet]
+        [HttpGet]
        [Route("Album/{id}")]
         public IHttpActionResult GetAlbumById(int id)
         {
@@ -75,7 +91,7 @@ namespace API.Controllers
         /// <returns></returns>
         [HttpPut]
         [Route("Album")]
-        public IHttpActionResult PutAlbum(AlbumUpdate model)
+        public IHttpActionResult PutAlbum(AlbumUpdateModel model)
         {
             AlbumService albumService = CreateAlbumService();
 
@@ -87,13 +103,13 @@ namespace API.Controllers
             return Ok();
         }
 
-        //Delete api/album{id}
+        //Patch api/album{id}
         /// <summary>
         /// Delete a Album
         /// </summary>
         /// <param name="id">Mandatory: AlbumID </param>
         /// <returns></returns>
-       [HttpDelete]
+       [HttpPatch]
        [Route("Album/{id}")]
         public IHttpActionResult DeleteAlbumById(int id)
         {

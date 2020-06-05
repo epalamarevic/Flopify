@@ -18,9 +18,8 @@ namespace API.Controllers
         /// <summary>
         /// Create a Band
         /// </summary>
-        /// <param name="model"></param>
+        /// <param name="band"></param>
         /// <returns></returns>
-      
         [HttpPost]
         [Route("Band")]
         public IHttpActionResult PostBand(BandCreateModel band)
@@ -34,6 +33,7 @@ namespace API.Controllers
 
             return Ok();
         }
+
         //Get api/band
         /// <summary>
         /// Get all Bands
@@ -48,6 +48,22 @@ namespace API.Controllers
             var tracks = bandService.GetAllBands();
 
             return Ok(tracks);
+        }
+
+        //Get api/band
+        /// <summary>
+        /// Get all Bands in order of Dislikes
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("BandByDislikes")]
+        public IHttpActionResult GetBandsByDislikes()
+        {
+            BandService bandService = CreateBandService();
+
+            var bands = bandService.GetAllBandsByDislikes();
+
+            return Ok(bands);
         }
 
         //Get api/Band
@@ -75,7 +91,7 @@ namespace API.Controllers
         /// <returns></returns>
         [HttpPut]
         [Route("Band")]
-        public IHttpActionResult PutBand(BandEditModel band)
+        public IHttpActionResult PutBand(BandUpdateModel band)
         {
             BandService bandService = CreateBandService();
 
@@ -86,13 +102,14 @@ namespace API.Controllers
 
             return Ok();
         }
-        //Delete api/band{id}
+
+        //Patch api/band{id}
         /// <summary>
         /// Delete a Band
         /// </summary>
         /// <param name="id">Mandatory: BandID</param>
         /// <returns></returns>
-        [HttpDelete]
+        [HttpPatch]
         [Route("Band/{id}")]
         public IHttpActionResult DeleteBandById(int id)
         {

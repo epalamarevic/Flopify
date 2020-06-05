@@ -218,6 +218,8 @@
     <Compile Include="Controllers\BandController.cs" />
     <Compile Include="Controllers\DislikeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PlaylistController.cs" />
+    <Compile Include="Controllers\QueueController.cs" />
     <Compile Include="Controllers\TrackController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">

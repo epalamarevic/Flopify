@@ -7,12 +7,13 @@ using System.Threading.Tasks;
 
 namespace Contracts
 {
-    public interface IBandServices
+    public interface IBandService
     {
         void CreateBand(BandCreateModel band);
         IEnumerable<BandListModel> GetAllBands();
+        IEnumerable<BandListByDislikesModel> GetAllBandsByDislikes();
         BandDetailModel GetBandById(int bandId);
-        void UpdateBand(BandEditModel band);
+        void UpdateBand(BandUpdateModel band);
         void DeleteBand(int bandId);
     }
 }

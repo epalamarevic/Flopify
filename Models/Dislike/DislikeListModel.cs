@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Models.Dislike
 {
-    public class ListDislikeModel
+    public class DislikeListModel
     {
         public int DislikeId { get; set; }
         public int? BandId { get; set; }
