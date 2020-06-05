@@ -18,7 +18,7 @@ In order to use the project methods you need to register an Account and receive 
 Click on the Account tab. Go to POST Flopify/Account/Register. Under value, include your email and password. Once registered with your email and password, get a token. Go to Auth tab and open POST Flopify/token. Note: Grant-type value is *password*, include your email and password you used to register. Keep that token handy as you will need it to authorize the requests. 
 Once your account is registered, you may authorize requests for Band, Album, Tracks as the rest of the endpoints.
 Follow the descriptions for each of the Rest Methods; Post, Get, Put, Delete to understand what is happening. 
-<img src ="image/swagger.png" width="700" >
+
 
 # Contribution
 XML programming language was used in contribution to Swagger UI. When you test the project in Swagger it specifically shows you what each RestAPI Method is doing. 
