@@ -18,7 +18,7 @@ namespace API.Controllers
         /// <summary>
         /// Create a Dislike for Track
         /// </summary>
-        /// <param name="dislike">Mandatory: BandID, AlbumID, TrackID</param>
+        /// <param name="id">Mandatory: BandID, AlbumID, TrackID</param>
         /// <returns></returns>
         [HttpPost]
         [Route("Track/{id}")]
@@ -38,7 +38,7 @@ namespace API.Controllers
         /// <summary>
         /// Create a Dislike for Album
         /// </summary>
-        /// <param name="dislike">Mandadtory: BandID, AlbumID</param>
+        /// <param name="id">Mandadtory: BandID, AlbumID</param>
         /// <returns></returns>
         [HttpPost]
         [Route("Album/{id}")]
@@ -58,7 +58,7 @@ namespace API.Controllers
         /// <summary>
         /// Create a Dislike for Band
         /// </summary>
-        /// <param name="dislike">Mandatory: BandID</param>
+        /// <param name="id">Mandatory: BandID</param>
         /// <returns></returns>
         [HttpPost]
         [Route("Band/{id}")]
@@ -90,13 +90,13 @@ namespace API.Controllers
             return Ok(dislikes);
         }
 
-        //Delete api/dislike{id}
+        //Patch api/dislike{id}
         /// <summary>
         /// Delete a Dislike
         /// </summary>
-        /// <param name="dislike">Mandatory: DislikeID</param>
+        /// <param name="id">Mandatory: DislikeID</param>
         /// <returns></returns>
-        [HttpDelete]
+        [HttpPatch]
         [Route("{id}")]
         public IHttpActionResult DeleteDislike(int id)
         {

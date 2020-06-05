@@ -9,12 +9,10 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    public class ListPlaylistModel
+    public class PlaylistListModel
     {
         public int PlaylistId { get; set; }
-       
         public string Title { get; set; }
-
         public int NumberOfTracks { get; set; }
     }
 }

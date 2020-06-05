@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Models.Playlist
 {
-    public class TrackAddModel
+    public class PlaylistTrackAddModel
     {
         public int PlaylistId { get; set; }
         public int TrackId { get; set; }

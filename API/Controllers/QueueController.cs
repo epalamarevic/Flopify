@@ -14,6 +14,11 @@ namespace API.Controllers
     [RoutePrefix("Flopify/Queue")]
     public class QueueController : ApiController
     {
+        //Post api/queue
+        /// <summary>
+        /// Create a Queue
+        /// </summary>
+        /// <returns></returns>
         [HttpPost]
         [Route]
         public IHttpActionResult CreateQueue()
@@ -25,6 +30,11 @@ namespace API.Controllers
             return Ok();
         }
 
+        //Get api/queue
+        /// <summary>
+        /// Get all Tracks in Queue
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [Route]
         public IHttpActionResult GetQueue()
@@ -36,6 +46,12 @@ namespace API.Controllers
             return Ok(queue);
         }
 
+        //Patch api/queue/track/{id}
+        /// <summary>
+        /// Add a Track to Queue
+        /// </summary>
+        /// <param name="id">Mandatory: TrackID</param>
+        /// <returns></returns>
         [HttpPatch]
         [Route("Track/{id}")]
         public IHttpActionResult AddTrack(int id)
@@ -50,6 +66,12 @@ namespace API.Controllers
             return Ok();
         }
 
+        //Patch api/queue/album/{id}
+        /// <summary>
+        /// Add all Tracks from an Album to Queue
+        /// </summary>
+        /// <param name="id">Mandatory: AlbumID</param>
+        /// <returns></returns>
         [HttpPatch]
         [Route("Album/{id}")]
         public IHttpActionResult AddAlbum(int id)
@@ -64,6 +86,12 @@ namespace API.Controllers
             return Ok();
         }
 
+        //Patch api/queue/band/{id}
+        /// <summary>
+        /// Add all Tracks from a Band to Queue
+        /// </summary>
+        /// <param name="id">Mandatory: BandID</param>
+        /// <returns></returns>
         [HttpPatch]
         [Route("Band/{id}")]
         public IHttpActionResult AddBand(int id)
@@ -78,9 +106,15 @@ namespace API.Controllers
             return Ok();
         }
 
+        //Post api/queue/createplaylist
+        /// <summary>
+        /// Create a Playlist from Queue
+        /// </summary>
+        /// <param name="model">Mandatory: Title</param>
+        /// <returns></returns>
         [HttpPost]
         [Route("CreatePlaylist")]
-        public IHttpActionResult CreatePlaylistFromQueue(CreatePlaylist model)
+        public IHttpActionResult CreatePlaylistFromQueue(PlaylistCreateModel model)
         {
             QueueService queueService = CreateQueueService();
 
@@ -92,6 +126,12 @@ namespace API.Controllers
             return Ok();
         }
 
+        //Patch api/queue/addtoplaylist/{id}
+        /// <summary>
+        /// Add all Tracks in Queue to Playlist
+        /// </summary>
+        /// <param name="id">Mandatory: PlaylistID</param>
+        /// <returns></returns>
         [HttpPatch]
         [Route("AddToPlaylist/{id}")]
         public IHttpActionResult AddQueueToPlaylist(int id)
@@ -106,6 +146,12 @@ namespace API.Controllers
             return Ok();
         }
 
+        //Patch api/queue
+        /// <summary>
+        /// Clear the Queue
+        /// </summary>
+        /// <param name="queue"></param>
+        /// <returns></returns>
         [HttpPatch]
         [Route("Clear")]
         public IHttpActionResult ClearQueue()

@@ -14,8 +14,9 @@ namespace Contracts
         void AddTrackToQueue(int trackId);
         void AddAlbumToQueue(int albumId);
         void AddBandToQueue(int bandId);
+        void DeleteTrackFromQueue(int trackId);
         IEnumerable<TrackListModel> GetAllFromQueue();
-        void CreatePlaylistFromQueue(CreatePlaylist model);
+        void CreatePlaylistFromQueue(PlaylistCreateModel model);
         void AddToPlayListFromQueue(int playlistId);
         void ClearQueue();
     }

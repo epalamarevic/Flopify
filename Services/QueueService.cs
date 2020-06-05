@@ -95,7 +95,7 @@ namespace Services
             }
         }
 
-        public void CreatePlaylistFromQueue(CreatePlaylist model)
+        public void CreatePlaylistFromQueue(PlaylistCreateModel model)
         {
             var entity = new Playlist()
             {

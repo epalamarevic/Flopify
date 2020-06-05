@@ -18,9 +18,8 @@ namespace API.Controllers
         /// <summary>
         /// Create a Band
         /// </summary>
-        /// <param name="model"></param>
+        /// <param name="band"></param>
         /// <returns></returns>
-      
         [HttpPost]
         [Route("Band")]
         public IHttpActionResult PostBand(BandCreateModel band)
@@ -104,13 +103,13 @@ namespace API.Controllers
             return Ok();
         }
 
-        //Delete api/band{id}
+        //Patch api/band{id}
         /// <summary>
         /// Delete a Band
         /// </summary>
         /// <param name="id">Mandatory: BandID</param>
         /// <returns></returns>
-        [HttpDelete]
+        [HttpPatch]
         [Route("Band/{id}")]
         public IHttpActionResult DeleteBandById(int id)
         {
